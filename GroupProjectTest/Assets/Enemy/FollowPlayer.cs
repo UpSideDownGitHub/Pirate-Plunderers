@@ -5,17 +5,25 @@ using UnityEngine.AI;
 
 public class FollowPlayer : MonoBehaviour
 {
+    [Header("Nav Mesh")]
     public NavMeshAgent NavMesh;
     public float Speed;
     public float Stopping_Distance;
     public float Attack_Distance;
 
+    [Header("Attacking")]
     public GameObject Player;
     public float Damage;
     public bool Attacking;
-
-    public float Attack_Wait_Time;
     public float Attack_Time;
+
+    [Header("Shooting")]
+    public GameObject[] Fire_Points;
+    public GameObject bullet;
+    public float bulletForce;
+
+    [Header("Rotation")]
+    public float rotationSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +56,32 @@ public class FollowPlayer : MonoBehaviour
         // get the distance to the player
         var distance = Vector2.Distance(transform.position, Player.transform.position);
 
-        transform.LookAt(Player.transform, Vector3.back);
-        transform.rotation = new Quaternion(0, 0, transform.rotation.z, transform.rotation.w);
+        // look at player
+        /*
+        var path = NavMesh.path;
+        for (int i = 0; i < path.corners.Length - 1; i++)
+        { 
+            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+        }
+        */
+
+        // ROTATION
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, NavMesh.velocity.normalized);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        /*
+        Vector2 moveDirection;
+        try
+        {
+            moveDirection = (transform.position - path.corners[1]).normalized;
+        }
+        catch
+        {
+            moveDirection = (transform.position - path.corners[0]).normalized;
+        }
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        */
+
 
         // in range of the player and can attack them
         if (distance <= Attack_Distance)
@@ -58,7 +90,7 @@ public class FollowPlayer : MonoBehaviour
             if (!Attacking)
             {
                 // attack the player
-                InvokeRepeating("Attack", Attack_Wait_Time, Attack_Time);
+                InvokeRepeating("Attack", 0, Attack_Time);
             }
             Attacking = true;
         }
@@ -71,14 +103,28 @@ public class FollowPlayer : MonoBehaviour
                 CancelInvoke("Attack");
             }
             Attacking = false;
-            // set a new destination of the player
-            NavMesh.SetDestination(Player.transform.position);
         }
+
+        // set a new destination of the player
+        NavMesh.SetDestination(Player.transform.position);
     }
 
     // the attack function of the ship
     public void Attack()
     {
-        Debug.Log("Attack The Player");
+        if ((Fire_Points[0].transform.position - Player.transform.position).sqrMagnitude < (Fire_Points[1].transform.position - Player.transform.position).sqrMagnitude)
+        {
+            Quaternion direction = new Quaternion(Fire_Points[0].transform.rotation.x, Fire_Points[0].transform.rotation.y, Fire_Points[0].transform.rotation.z, Fire_Points[0].transform.rotation.w);
+            GameObject TemporaryBulletHandler = Instantiate(bullet, Fire_Points[0].transform.position, direction);
+            TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = TemporaryBulletHandler.transform.right * bulletForce;
+
+        }
+        else
+        {
+            Quaternion direction = new Quaternion(Fire_Points[1].transform.rotation.x, Fire_Points[1].transform.rotation.y, Fire_Points[1].transform.rotation.z, Fire_Points[1].transform.rotation.w);
+            GameObject TemporaryBulletHandler = Instantiate(bullet, Fire_Points[1].transform.position, direction);
+            TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = -TemporaryBulletHandler.transform.right * bulletForce;
+
+        }
     }
 }

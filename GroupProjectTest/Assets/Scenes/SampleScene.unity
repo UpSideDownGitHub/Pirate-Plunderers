@@ -203,6 +203,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31896780}
   m_CullTransparentMesh: 1
+--- !u!1 &86575496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86575497}
+  m_Layer: 0
+  m_Name: FirePoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86575497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86575496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.78, y: -0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1160541525}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &87746426
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,8 +336,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &87746431
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,8 +510,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &121405881
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -762,8 +799,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &339420739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1017,6 +1057,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &789777389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789777390}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &789777390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789777389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.65, y: -0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1160541525}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825078869
 GameObject:
@@ -1315,11 +1386,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 3
+  m_Acceleration: 1.5
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 0.2
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1340,14 +1411,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NavMesh: {fileID: 1160541522}
-  Speed: 2
+  Speed: 3
   Stopping_Distance: 3
-  Attack_Distance: 2
+  Attack_Distance: 10
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points:
+  - {fileID: 789777389}
+  - {fileID: 86575496}
+  bullet: {fileID: 5099541382865166979, guid: 663e4f295e547984f86270e7f0fad57a, type: 3}
+  bulletForce: 50
+  rotationSpeed: 150
 --- !u!212 &1160541524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1413,6 +1489,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1708926490}
+  - {fileID: 789777390}
+  - {fileID: 86575497}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1589,8 +1667,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &1286366318
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31525,8 +31606,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &1565679427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31686,7 +31770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708926489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.44, z: -0.58}
+  m_LocalPosition: {x: 0, y: -0.439, z: -0.58}
   m_LocalScale: {x: 1, y: 0.1211, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31847,8 +31931,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &1737357652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32018,8 +32105,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &1756598122
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32349,8 +32439,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &1871097368
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32520,8 +32613,11 @@ MonoBehaviour:
   Player: {fileID: 0}
   Damage: 20
   Attacking: 0
-  Attack_Wait_Time: 3
   Attack_Time: 0.3
+  Fire_Points: []
+  bullet: {fileID: 0}
+  bulletForce: 0
+  rotationSpeed: 0
 --- !u!212 &1885404275
 SpriteRenderer:
   m_ObjectHideFlags: 0

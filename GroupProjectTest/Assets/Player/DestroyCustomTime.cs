@@ -6,6 +6,7 @@ public class DestroyCustomTime : MonoBehaviour
 {
     public float Time = 2f;
     public float damage = 20;
+    public bool enemy_bullet;
     // Start is called before the first frame update
     public void Start()
     {
@@ -14,7 +15,7 @@ public class DestroyCustomTime : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemy")
+        if (collision.collider.tag == "Enemy" && !enemy_bullet)
         {
             collision.collider.GetComponent<Health>().Take_Off_Health(damage);
             Destroy(gameObject);
