@@ -13,15 +13,19 @@ public class DestroyCustomTime : MonoBehaviour
         Destroy(gameObject, Time);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Enemy" && !enemy_bullet)
+        if (collision.tag == "Enemy" && !enemy_bullet)
         {
-            collision.collider.GetComponent<Health>().Take_Off_Health(damage);
+            collision.gameObject.GetComponent<Health>().Take_Off_Health(damage);
             Destroy(gameObject);
         }
-        else if (collision.collider.tag == "Walls")
+        if (collision.tag == "Player" && enemy_bullet)
+        {
+            //DEAL DAMAGE TO THE PLAYER
             Destroy(gameObject);
-
+        }
+        else if (collision.tag == "Walls")
+            Destroy(gameObject);
     }
 }
