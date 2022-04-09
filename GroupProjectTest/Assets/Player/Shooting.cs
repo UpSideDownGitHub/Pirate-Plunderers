@@ -10,8 +10,6 @@ public class Shooting : MonoBehaviour
 
     public float MaxAimDistance = 10;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
