@@ -13,7 +13,7 @@ public class ShopIsland : MonoBehaviour
 
 
     // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    void OnCollision(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
