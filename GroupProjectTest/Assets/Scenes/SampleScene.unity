@@ -1541,8 +1541,8 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.23
-  m_Depth: -1
+  orthographic size: 6.19
+  m_Depth: 0.92
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -6934,7 +6934,6 @@ GameObject:
   - component: {fileID: 1408320167}
   - component: {fileID: 1408320169}
   - component: {fileID: 1408320168}
-  - component: {fileID: 1408320170}
   m_Layer: 5
   m_Name: MiniMap
   m_TagString: Untagged
@@ -6997,19 +6996,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408320166}
   m_CullTransparentMesh: 1
---- !u!114 &1408320170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408320166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!1 &1458144319
 GameObject:
   m_ObjectHideFlags: 0
