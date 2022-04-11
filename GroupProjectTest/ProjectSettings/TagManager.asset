@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Water
+    uniqueID: 1109037551
+    locked: 0
+  - name: Ship
+    uniqueID: 4018062781
+    locked: 0
+  - name: Islands/Mountains
+    uniqueID: 1535976617
+    locked: 0
