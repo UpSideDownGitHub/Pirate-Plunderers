@@ -13,10 +13,9 @@ public class ShopIsland : MonoBehaviour
 
 
     // Update is called once per frame
-    void OnCollision(Collision collision)
+    void OnTriggerEnter2D (Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
+        
             if (Input.GetKeyDown(KeyCode.P))
             {
                 if (GameIsPaused)
@@ -31,7 +30,7 @@ public class ShopIsland : MonoBehaviour
 
                 }
             }
-        }
+        
     }
 
     public void Resume()
