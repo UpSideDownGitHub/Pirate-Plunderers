@@ -38,7 +38,7 @@ public class InventoryMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         inventoryMenuUI.SetActive(true);
         Time.timeScale = 0f;
