@@ -3968,7 +3968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346.3498, y: -252.76291}
+  m_AnchoredPosition: {x: -367, y: -160}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735286737
@@ -5935,8 +5935,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 67.631}
-  m_SizeDelta: {x: 0, y: -135.26}
+  m_AnchoredPosition: {x: -81.585, y: 25.1559}
+  m_SizeDelta: {x: -183.17, y: -30.3118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227782647
 MonoBehaviour:
@@ -38024,10 +38024,10 @@ GameObject:
   - component: {fileID: 2134876549}
   - component: {fileID: 2134876554}
   - component: {fileID: 2134876548}
-  - component: {fileID: 2134876552}
   - component: {fileID: 2134876547}
   - component: {fileID: 2134876553}
   - component: {fileID: 2134876555}
+  - component: {fileID: 2134876556}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -38178,22 +38178,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2134876552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134876546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25435776fcbdda9449b12ec90b6fec7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circle: {fileID: 0}
-  dot: {fileID: 0}
-  moveLimiter: 0.7
-  rotationSpeed: 300
 --- !u!114 &2134876553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38236,6 +38220,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newGameLevel: 
   shopMenuUI: {fileID: 523214281}
+--- !u!114 &2134876556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134876546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ec9176169d1414894b6610f6e749fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementJoystick: {fileID: 1227782648}
+  playerSpeed: 4
+  rotationSpeed: 190
 --- !u!1 &2137195354
 GameObject:
   m_ObjectHideFlags: 0
