@@ -146,6 +146,17 @@ public class BossEnemy1 : MonoBehaviour
         canRam = true;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (ram)
+        {
+            if (collision.collider.tag == "Player")
+            {
+                Debug.Log("Damage Player");
+            }
+        }
+    }
+
     // the attack function of the ship
     public void Attack()
     {

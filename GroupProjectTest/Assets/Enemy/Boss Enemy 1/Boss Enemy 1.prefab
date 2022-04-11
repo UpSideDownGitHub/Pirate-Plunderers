@@ -399,9 +399,9 @@ MonoBehaviour:
   Max_Ram_Distance: 15
   Min_Ram_Distance: 6
   ramSpeed: 50
-  ramAcceleration: 4
-  ramCoolDown: 2
-  ramTime: 1
+  ramAcceleration: 3
+  ramCoolDown: 10
+  ramTime: 2
   ram: 0
   canRam: 1
   rotationSpeed: 170
