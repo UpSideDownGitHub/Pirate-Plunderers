@@ -2,6 +2,12 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+
+# ADDED FILES SO THEY ARE NOT UPLOADED
+*.wav
+*.blend
+
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
