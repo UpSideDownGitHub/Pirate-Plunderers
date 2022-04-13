@@ -18,8 +18,8 @@ public class RandomEnimies : MonoBehaviour
     public void SpawnObject()
     {
         Vector3 pos = transform.position;
-        pos.x += Random.Range(-45, 45);
-        pos.y += Random.Range(-45, 45);
+        pos.x += Random.Range(-40, 40);
+        pos.y += Random.Range(-40, 40);
         Instantiate(Enemy, pos, transform.rotation);
         if (stopSpawning)
         {
