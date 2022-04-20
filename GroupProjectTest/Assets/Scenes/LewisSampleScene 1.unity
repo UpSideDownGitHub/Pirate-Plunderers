@@ -38444,7 +38444,7 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7110cb286665db447bc62ce21d9c4da6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 04b81e41c421bc347a8d425c80bcc95e, type: 2}
 --- !u!4 &2046855944
 Transform:
   m_ObjectHideFlags: 0
