@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (Vector3.Distance(player.transform.position, transform.position) < ExplosionRadius)
         {
-            Debug.Log("Damege Player");
+            //Debug.Log("Damege Player");
         }
         Destroy(gameObject);
     }

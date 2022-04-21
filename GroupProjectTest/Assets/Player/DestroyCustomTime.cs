@@ -26,6 +26,18 @@ public class DestroyCustomTime : MonoBehaviour
             Destroy(gameObject);
         }
         else if (collision.tag == "Walls")
-            Destroy(gameObject);
+        {
+            try
+            {
+                collision.gameObject.GetComponent<Island_Health>().addHealth((int)damage/2);
+
+                Destroy(gameObject);
+            }
+            catch
+            {
+                Destroy(gameObject);
+            }
+            
+        }
     }
 }

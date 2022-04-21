@@ -42,9 +42,6 @@ public class Shooting : MonoBehaviour
         }
         else
         {
-            Debug.Log((Fire_Points[1].transform.position - targetPos.position).sqrMagnitude);
-            Debug.Log((Fire_Points[3].transform.position - targetPos.position).sqrMagnitude);
-            Debug.Log("\n");
             if ((Fire_Points[1].transform.position - targetPos.position).sqrMagnitude < (Fire_Points[3].transform.position - targetPos.position).sqrMagnitude)
             {
                 GameObject TemporaryBulletHandler = Instantiate(Bullet, Fire_Points[0].transform.position, Quaternion.identity);

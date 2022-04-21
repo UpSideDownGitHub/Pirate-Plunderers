@@ -104,6 +104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Max_Health: 1000
   Current_Health: 0
+  partOfEncounter: 0
+  EnemySpawner: {fileID: 0}
+  weightOfEnemy: 1
+  enemyNumber: 0
 --- !u!114 &6414866383773751956
 MonoBehaviour:
   m_ObjectHideFlags: 0
