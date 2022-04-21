@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class collisioncontroller : MonoBehaviour
 {
-    public HealthbarController healthbar;
+    public HealthbarController healthBar;
 
     void onCollisionEnter(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Bullet")
         {
-            if (healthbar)
+            if (healthBar)
             {
-                healthbar.onTakeDamage(10);
+                healthBar.onTakeDamage(10);
             }
         }
     }
