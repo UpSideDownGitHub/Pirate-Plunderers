@@ -7,7 +7,12 @@ TagManager:
   - Enemy
   - Walls
   - test
+<<<<<<< Updated upstream
   - Bullet
+=======
+  - Image
+  - Enemytest
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

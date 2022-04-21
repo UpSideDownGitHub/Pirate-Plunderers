@@ -1,5 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +7,11 @@ public class HealthbarController : MonoBehaviour
     public float health;
     public float starthealth;
 
+<<<<<<< Updated upstream
    public void onTakeDamage(int damage)
+=======
+   public void onTakeDamage(float damage)
+>>>>>>> Stashed changes
 {
     health = health - damage;
     healthBar.fillAmount = health / starthealth;

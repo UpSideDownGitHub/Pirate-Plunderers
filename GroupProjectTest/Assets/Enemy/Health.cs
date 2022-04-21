@@ -19,8 +19,6 @@ public class Health : MonoBehaviour
         if (Current_Health <= 0)
         {
             Destroy(gameObject);
-
-            //Debug.log("five gold");
         }
     }
 }
