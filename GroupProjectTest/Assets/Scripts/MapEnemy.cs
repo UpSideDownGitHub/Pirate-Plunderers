@@ -23,6 +23,7 @@ public class MapEnemy : MonoBehaviour{
         rb.rotation = angle;
         direction.Normalize();
         movement = direction;
+        
     }
 
     public void FixedUpdate(){
@@ -33,7 +34,5 @@ public class MapEnemy : MonoBehaviour{
           rb.MovePosition((Vector2)transform.position + (direction * rotationspeed * movespeed * Time.deltaTime));
 
     }
-
-
 }
 
