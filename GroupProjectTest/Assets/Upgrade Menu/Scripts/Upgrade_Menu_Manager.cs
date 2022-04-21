@@ -11,6 +11,7 @@ public class Upgrade_Menu_Manager : MonoBehaviour
     public GameObject spawnUnder;
     public GameObject prefabButton;
     int currentUpgradeType = 999;
+    int[] currentItemSelected = { 999,999,999,999};
 
     [Header("Information/Stats Screens")]
     public GameObject[] cannonScreenUI;
@@ -68,6 +69,8 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         // LOAD SAVE DATA TO GET INFORMATION OUT
         var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
 
+        // SET CURRENT ITEM TO BE SELECTED
+        currentItemSelected[0] = id;
         /*
          *  0 = Main Object
          *  1 = Damage
@@ -88,6 +91,8 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         // LOAD SAVE DATA TO GET INFORMATION OUT
         var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
 
+        // SET CURRENT ITEM TO BE SELECTED
+        currentItemSelected[1] = id;
         /*
          *  0 = Main Object
          *  1 = Speed
@@ -108,6 +113,8 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         // LOAD SAVE DATA TO GET INFORMATION OUT
         var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
 
+        // SET CURRENT ITEM TO BE SELECTED
+        currentItemSelected[2] = id;
         /*
          *  0 = Main Object
          *  1 = Description
@@ -124,6 +131,8 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         // LOAD SAVE DATA TO GET INFORMATION OUT
         var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
 
+        // SET CURRENT ITEM TO BE SELECTED
+        currentItemSelected[3] = id;
         /*
          *  0 = Main Object
          *  1 = Health
@@ -141,7 +150,24 @@ public class Upgrade_Menu_Manager : MonoBehaviour
 
     public void Equip()
     {
-
+        var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+        if (currentUpgradeType == 0 && currentItemSelected[0] != 999)
+        {
+            SaveData.loadout.cannon = currentItemSelected[0];
+        }
+        else if (currentUpgradeType == 1 && currentItemSelected[1] != 999)
+        {
+            SaveData.loadout.sail = currentItemSelected[1];
+        }
+        else if (currentUpgradeType == 2 && currentItemSelected[2] != 999)
+        {
+            SaveData.loadout.colour = currentItemSelected[2];
+        }
+        else if (currentUpgradeType == 3 && currentItemSelected[3] != 999)
+        {
+            SaveData.loadout.size = currentItemSelected[3];
+        }
+        SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
     }
 
     public void back()
@@ -161,31 +187,32 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         {
             for (int i = 0; i < SaveData.ShipUpgrade.Cannons.Length; i++)
             {
-                PopulateViewPort(i, id);
+                if (SaveData.ShipUpgrade.Cannons[i].unlocked)
+                    PopulateViewPort(i, id);
             }
         }
         else if (id == 1)
         {
             for (int i = 0; i < SaveData.ShipUpgrade.Sails.Length; i++)
             {
-                Debug.Log(SaveData.ShipUpgrade.Sails[i].ID);
-                PopulateViewPort(i, id);
+                if (SaveData.ShipUpgrade.Sails[i].unlocked)
+                    PopulateViewPort(i, id);
             }
         }
         else if (id == 2)
         {
             for (int i = 0; i < SaveData.ShipUpgrade.Colours.Length; i++)
             {
-                Debug.Log(SaveData.ShipUpgrade.Colours[i].ID);
-                PopulateViewPort(i, id);
+                if (SaveData.ShipUpgrade.Colours[i].unlocked)
+                    PopulateViewPort(i, id);
             }
         }
         else if (id == 3)
         {
             for (int i = 0; i < SaveData.ShipUpgrade.Sizes.Length; i++)
             {
-                Debug.Log(SaveData.ShipUpgrade.Sizes[i].ID);
-                PopulateViewPort(i, id);
+                if (SaveData.ShipUpgrade.Sizes[i].unlocked)
+                    PopulateViewPort(i, id);
             }
         }
     }
