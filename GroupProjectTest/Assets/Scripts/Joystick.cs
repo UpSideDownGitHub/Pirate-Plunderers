@@ -23,6 +23,7 @@ public class Joystick : MonoBehaviour
     //Pointer down code 
     public void PointerDown()
     {
+        joystick.SetActive(true);
         joystick.transform.position = Input.mousePosition;
         joystickBG.transform.position = Input.mousePosition;
         joystickTouchPos = Input.mousePosition;
@@ -50,6 +51,7 @@ public class Joystick : MonoBehaviour
     //Pointer up code 
     public void PointerUp()
     {
+        joystick.SetActive(false);
         joystickVec = Vector2.zero;
         joystick.transform.position = joystickOriginalPos;
         joystickBG.transform.position = joystickOriginalPos;
