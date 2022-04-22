@@ -62,7 +62,7 @@ public class Island_Health : MonoBehaviour
             else if (doOnce)
             {
                 doOnce = false;
-                InvokeRepeating("DecreaseValue", 0, decreaseTime);
+                InvokeRepeating("DecreaseValue", decreaseTime, decreaseTime);
                 healthBarCanvas.SetActive(true);
             }
         }

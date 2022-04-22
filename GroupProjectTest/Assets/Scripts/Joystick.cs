@@ -13,6 +13,10 @@ public class Joystick : MonoBehaviour
     private Vector2 joystickOriginalPos;
     private float joystickRadius;
 
+    [Header("Shooting Joystick")]
+    public bool shooting;
+    public bool currentlyShooting;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,8 @@ public class Joystick : MonoBehaviour
     //Pointer down code 
     public void PointerDown(BaseEventData baseEventData)
     {
+        if (shooting)
+            currentlyShooting = true;
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         joystick.SetActive(true);
         joystick.transform.position = pointerEventData.position;
@@ -54,6 +60,8 @@ public class Joystick : MonoBehaviour
     //Pointer up code 
     public void PointerUp()
     {
+        if (shooting)
+            currentlyShooting = false;
         joystick.SetActive(false);
         joystickVec = Vector2.zero;
         joystick.transform.position = joystickOriginalPos;

@@ -10,11 +10,16 @@ public class Shooting : MonoBehaviour
 
     [Header("Shooting")]
     public float bulletForce;
+    public float shootTime;
+    public bool reload;
+    public float reloadTime;
+    bool canShoot = true;
 
     [Header("Cannon")]
+    public Joystick aimingJoystick;
     public GameObject cannonMain;
     public float cannonRotateSpeed;
-    public float maxAimDistance = 10;
+    public bool doOnce = true;
 
 
 
@@ -27,22 +32,49 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ROTATE THE CANNON TO FACE THE PLAYER
-        Vector3 moveDirection = (this.transform.position - cannonMain.transform.position).normalized;
+        // ROTATE THE CANNON TO FACE CORRECT DIRECTION
+        Vector2 moveDirection = aimingJoystick.joystickVec;
         Quaternion toRotation2 = Quaternion.LookRotation(Vector3.forward, moveDirection);
         cannonMain.transform.rotation = Quaternion.RotateTowards(cannonMain.transform.rotation, toRotation2, cannonRotateSpeed * Time.deltaTime);
+
+        if (aimingJoystick.currentlyShooting && doOnce)
+        {
+            doOnce = false;
+            InvokeRepeating("shoot", 0, shootTime);
+        }
+        else if (!aimingJoystick.currentlyShooting)
+        {
+            doOnce = true;
+            CancelInvoke("shoot");
+        }
+    }
+
+    public IEnumerator timeToReload()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(reloadTime);
+        canShoot = true;
     }
 
     public void shoot()
     {
-        Transform targetPos = GetClosestEnemy();
-        /*
-        if (targetPos == null)
+        //Transform targetPos = GetClosestEnemy();
+        if (reload)
+            StartCoroutine(timeToReload());
+
+        if (canShoot)
         {
-            Quaternion direction = new Quaternion(Fire_Points[0].transform.rotation.x, Fire_Points[0].transform.rotation.y, Fire_Points[0].transform.rotation.z, Fire_Points[0].transform.rotation.w);
-            GameObject TemporaryBulletHandler = Instantiate(Bullet, Fire_Points[0].transform.position, direction);
-            TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = TemporaryBulletHandler.transform.right * Bullet_Force;
+            for (int i = 0; i < firePoints.Length; i++)
+            {
+                Quaternion direction = new Quaternion(firePoints[i].transform.rotation.x, firePoints[i].transform.rotation.y, firePoints[i].transform.rotation.z, firePoints[i].transform.rotation.w);
+                GameObject TemporaryBulletHandler = Instantiate(bullet, firePoints[i].transform.position, direction);
+                TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = TemporaryBulletHandler.transform.up * bulletForce;
+            }
         }
+
+
+
+        /*
         else
         {
             GameObject TemporaryBulletHandler = Instantiate(Bullet, Fire_Points[0].transform.position, Quaternion.identity);
@@ -50,6 +82,7 @@ public class Shooting : MonoBehaviour
         }
         */
     }
+    /*
     Transform GetClosestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -68,4 +101,5 @@ public class Shooting : MonoBehaviour
         }
         return bestTarget;
     }
+    */
 }
