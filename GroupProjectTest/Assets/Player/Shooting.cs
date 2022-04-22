@@ -12,6 +12,8 @@ public class Shooting : MonoBehaviour
     public float bulletForce;
     public float shootTime;
     public bool reload;
+    bool reloading = true;
+    public float shootingTime;
     public float reloadTime;
     bool canShoot = true;
 
@@ -48,19 +50,23 @@ public class Shooting : MonoBehaviour
             CancelInvoke("shoot");
         }
     }
-
-    public IEnumerator timeToReload()
+    public IEnumerator reloadCycle()
     {
+        reloading = false;
+        yield return new WaitForSeconds(shootingTime);
         canShoot = false;
         yield return new WaitForSeconds(reloadTime);
         canShoot = true;
+        reloading = true;
     }
 
     public void shoot()
     {
         //Transform targetPos = GetClosestEnemy();
-        if (reload)
-            StartCoroutine(timeToReload());
+        if (canShoot && reload && reloading)
+        {
+            StartCoroutine(reloadCycle());
+        }
 
         if (canShoot)
         {

@@ -12,9 +12,24 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        Invoke("DamagePlayer", Time);
+        if (enemy_bullet)
+            Invoke("DamageEnemy", Time);
+        else
+            Invoke("DamagePlayer", Time);
     }
 
+    public void DamageEnemy()
+    {
+        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemys.Length; i++)
+        {
+            if (Vector3.Distance(enemys[i].transform.position, transform.position) < ExplosionRadius)
+            {
+                enemys[i].GetComponent<Health>().Take_Off_Health(damage);
+            }
+        }
+        Destroy(gameObject);
+    }
     public void DamagePlayer()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -29,8 +44,9 @@ public class Bomb : MonoBehaviour
     {
         if (collision.tag == "Enemy" && !enemy_bullet)
         {
-            collision.gameObject.GetComponent<Health>().Take_Off_Health(damage);
-            Destroy(gameObject);
+            // DEAL DAMAGE TO THE ENEMIES
+            CancelInvoke();
+            DamageEnemy();
         }
         if (collision.tag == "Player" && enemy_bullet)
         {
