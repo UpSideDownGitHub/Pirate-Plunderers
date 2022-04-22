@@ -16,17 +16,20 @@ public class Joystick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Input.multiTouchEnabled = true;
         joystickOriginalPos = joystickBG.transform.position;
         joystickRadius = joystickBG.GetComponent<RectTransform>().sizeDelta.y / 7; //Makes the joystick area to move bigger. Decrease or increase this
     }
 
     //Pointer down code 
-    public void PointerDown()
+    public void PointerDown(BaseEventData baseEventData)
     {
+        PointerEventData pointerEventData = baseEventData as PointerEventData;
         joystick.SetActive(true);
-        joystick.transform.position = Input.mousePosition;
-        joystickBG.transform.position = Input.mousePosition;
-        joystickTouchPos = Input.mousePosition;
+        joystick.transform.position = pointerEventData.position;
+        joystickBG.transform.position = pointerEventData.position;
+        joystickTouchPos = pointerEventData.position;
+
     }
 
     //Drag code 
