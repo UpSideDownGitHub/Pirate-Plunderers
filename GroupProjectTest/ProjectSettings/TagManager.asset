@@ -8,6 +8,7 @@ TagManager:
   - Walls
   - test
   - ENEMYSPAWNER
+  - SHOOTBUTTON
   layers:
   - Default
   - TransparentFX
