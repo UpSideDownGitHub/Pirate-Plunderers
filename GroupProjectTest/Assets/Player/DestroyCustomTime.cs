@@ -7,6 +7,9 @@ public class DestroyCustomTime : MonoBehaviour
     public float Time = 2f;
     public float damage = 20;
     public bool enemy_bullet;
+
+    //healthbardamage damage;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -22,6 +25,7 @@ public class DestroyCustomTime : MonoBehaviour
         }
         if (collision.tag == "Player" && enemy_bullet)
         {
+            //damage
             //DEAL DAMAGE TO THE PLAYER
             Destroy(gameObject);
         }
