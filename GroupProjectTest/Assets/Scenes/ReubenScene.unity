@@ -4588,7 +4588,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 371097734}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1443134139}
+        m_TargetAssemblyTypeName: Shop_Menu_Manager, Assembly-CSharp
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &371097734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15512,6 +15524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnUnder: {fileID: 1798191117}
   prefabButton: {fileID: 4709519844569748752, guid: 36a18a86e3dc71943975850d0541dbfb, type: 3}
+  currentButton: {fileID: 0}
   cannonScreenUI:
   - {fileID: 496250096}
   - {fileID: 688537626}
@@ -15540,9 +15553,6 @@ MonoBehaviour:
   - {fileID: 1541119133}
   - {fileID: 1679346867}
   ammount: 0
-  minAmmount: 5
-  maxAmmount: 24
-  allreadySpawned: 
   coins: {fileID: 289360419}
 --- !u!1 &1458144319
 GameObject:
