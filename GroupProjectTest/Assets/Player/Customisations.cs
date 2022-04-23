@@ -17,6 +17,9 @@ public class Customisations : MonoBehaviour
     public GameObject cannonMain;
     public GameObject sailMain;
 
+    [Header("Stat Changing")]
+    public PlayerMove playerMove; // Speed & Turning Speed; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +43,9 @@ public class Customisations : MonoBehaviour
 
         Vector2 S = spriteRenderer.sprite.bounds.size;
         boxCollider2D.size = S;
+
+        // setting variables based upon what is equipped
+        playerMove.playerSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].speed + SaveData.ShipUpgrade.Sails[SaveData.loadout.size].speed;
+        playerMove.rotationSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].turning + SaveData.ShipUpgrade.Sails[SaveData.loadout.size].turning;
     }
 }
