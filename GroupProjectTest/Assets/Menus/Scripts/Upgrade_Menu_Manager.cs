@@ -22,8 +22,10 @@ public class Upgrade_Menu_Manager : MonoBehaviour
     public void PopulateViewPort(int id, int typeID)
     {
         GameObject temp = Instantiate(prefabButton, spawnUnder.transform);
+        var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
         if (typeID == 0)
         {
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Cannons[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
                 CannonPressed(id);
@@ -31,6 +33,7 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         }
         else if (typeID == 1)
         {
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Sails[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
                 SailPressed(id);
@@ -38,6 +41,7 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         }
         else if (typeID == 2)
         {
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Colours[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
                 ColourPressed(id);
@@ -45,6 +49,7 @@ public class Upgrade_Menu_Manager : MonoBehaviour
         }
         else if (typeID == 3)
         {
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Sizes[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
                 SizePressed(id);

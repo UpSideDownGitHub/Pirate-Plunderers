@@ -45,38 +45,46 @@ public class Cannon
 {
     [XmlAttribute("ID")]
     public int ID;
+    public string name;
     public float damage;
     public float range;
     public string description;
     public bool unlocked;
     public bool buyable;
+    public float price;
 }
 public class Sail
 {
     [XmlAttribute("ID")]
     public int ID;
+    public string name;
     public float speed;
     public float turning;
     public string description;
     public bool unlocked;
     public bool buyable;
+    public float price;
 }
 public class Colour
 {
     [XmlAttribute("ID")]
     public int ID;
+    public string name;
     public string description;
     public bool unlocked;
     public bool buyable;
+    public float price;
 }
 public class Size
 {
     [XmlAttribute("ID")]
     public int ID;
+    public string name;
     public float health;
     public float speed;
     public float turning;
     public string description;
     public bool unlocked;
     public bool buyable;
+    public float price;
 }
