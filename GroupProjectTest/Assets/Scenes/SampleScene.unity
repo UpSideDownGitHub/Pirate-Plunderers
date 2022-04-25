@@ -280,7 +280,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1615089666046474968, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_Name
-      value: Button (3)
+      value: Inventory Button
       objectReference: {fileID: 0}
     - target: {fileID: 4157814544837771592, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -318,6 +318,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6031900374272222550, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
+      propertyPath: m_fontSize
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031900374272222550, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 10.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -348,11 +356,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_LocalScale.x
@@ -396,11 +404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -340
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 180
+      value: 224
       objectReference: {fileID: 0}
     - target: {fileID: 6621970570886539259, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2460,7 +2468,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 825078874}
+      - m_Target: {fileID: 1122005969}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -4686,6 +4694,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newGameLevel: 
   pauseMenuUI: {fileID: 1122005965}
+  joyStick: {fileID: 939467328}
+  miniMap: {fileID: 626651532}
+  pauseButton: {fileID: 2012766147}
+  inventoryButton: {fileID: 1855035098}
+  shootButton: {fileID: 1117798130}
 --- !u!114 &825078875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,6 +4711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b518ea5aef43d4aaac8a8507bd8786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joyStick: {fileID: 939467328}
+  shootButton: {fileID: 1117798130}
+  miniMap: {fileID: 626651532}
+  pauseButton: {fileID: 2012766147}
+  inventoryButton: {fileID: 1855035098}
   newGameLevel: 
   inventoryMenuUI: {fileID: 1524270095}
 --- !u!1 &908440308
@@ -4896,6 +4914,8 @@ MonoBehaviour:
   joystick: {fileID: 1772686869}
   joystickBG: {fileID: 189300278}
   joystickVec: {x: 0, y: 0}
+  shooting: 0
+  currentlyShooting: 0
 --- !u!114 &939467332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5582,6 +5602,7 @@ GameObject:
   - component: {fileID: 1122005966}
   - component: {fileID: 1122005968}
   - component: {fileID: 1122005967}
+  - component: {fileID: 1122005969}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -5650,6 +5671,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122005965}
   m_CullTransparentMesh: 1
+--- !u!114 &1122005969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122005965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efa650b12d20e04bbc5d77bec1d7458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGameLevel: 
+  pauseMenuUI: {fileID: 1122005965}
+  joyStick: {fileID: 939467328}
+  miniMap: {fileID: 626651532}
+  pauseButton: {fileID: 2012766147}
+  inventoryButton: {fileID: 1855035098}
+  shootButton: {fileID: 1117798130}
 --- !u!1 &1199505731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6733,7 +6773,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198739870765592423, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_Name
-      value: Button (2)
+      value: Pause Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497375090722205547, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
+      propertyPath: m_fontSize
+      value: 15.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497375090722205547, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15.75
       objectReference: {fileID: 0}
     - target: {fileID: 5766377147304057952, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_Pivot.x
@@ -6765,11 +6813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5766377147304057952, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5766377147304057952, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5766377147304057952, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_LocalScale.x
@@ -6813,7 +6861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5766377147304057952, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -342
+      value: -420.7
       objectReference: {fileID: 0}
     - target: {fileID: 5766377147304057952, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -37273,7 +37321,7 @@ GameObject:
   - component: {fileID: 1524270098}
   - component: {fileID: 1524270097}
   m_Layer: 5
-  m_Name: Upgrade Menu
+  m_Name: Inventory Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38549,6 +38597,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1855035098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1615089666046474968, guid: 1753f974bc683524a80c65e059cd6ae2, type: 3}
+  m_PrefabInstance: {fileID: 31152978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1868726667
 GameObject:
   m_ObjectHideFlags: 0
@@ -38625,6 +38678,11 @@ Transform:
   m_Father: {fileID: 2134876551}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2012766147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2198739870765592423, guid: afb1dfba455bc274b9603c705c26802b, type: 3}
+  m_PrefabInstance: {fileID: 1353049371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2046855942
 GameObject:
   m_ObjectHideFlags: 0
@@ -38998,16 +39056,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b773b24f8b8db4a967f3a456281880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 5099541382865166979, guid: 32f824d5539b5864aaaee3d5aeae8f8b, type: 3}
-  Fire_Points:
-  - {fileID: 1962923645}
-  - {fileID: 1770765756}
-  - {fileID: 1020048396}
-  - {fileID: 1484650883}
-  - {fileID: 1208329206}
-  - {fileID: 143805481}
-  Bullet_Force: 10
-  MaxAimDistance: 10
+  bullet: {fileID: 0}
+  firePoints: []
+  bulletForce: 0
+  shootTime: 0
+  reload: 0
+  shootingTime: 0
+  reloadTime: 0
+  aimingJoystick: {fileID: 0}
+  cannonMain: {fileID: 0}
+  cannonRotateSpeed: 0
+  doOnce: 1
 --- !u!61 &2134876548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39144,6 +39203,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newGameLevel: 
   pauseMenuUI: {fileID: 1122005965}
+  joyStick: {fileID: 0}
+  miniMap: {fileID: 0}
+  pauseButton: {fileID: 0}
+  inventoryButton: {fileID: 0}
+  shootButton: {fileID: 0}
 --- !u!114 &2134876554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39158,6 +39222,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newGameLevel: 
   pauseMenuUI: {fileID: 1122005965}
+  joyStick: {fileID: 0}
+  miniMap: {fileID: 0}
+  pauseButton: {fileID: 0}
+  inventoryButton: {fileID: 0}
+  shootButton: {fileID: 0}
 --- !u!114 &2134876555
 MonoBehaviour:
   m_ObjectHideFlags: 0
