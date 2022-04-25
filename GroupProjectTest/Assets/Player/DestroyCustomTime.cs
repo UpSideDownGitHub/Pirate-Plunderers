@@ -27,6 +27,7 @@ public class DestroyCustomTime : MonoBehaviour
         {
             collision.gameObject.GetComponent<healthbar>().damage(damage);
             Destroy(gameObject);
+            //print"take damage"
         }
         else if (collision.tag == "Walls")
         {
