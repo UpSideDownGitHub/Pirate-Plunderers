@@ -38,6 +38,7 @@ public class ShopIsland : MonoBehaviour
         inventoryButton.SetActive(false);
         shopActiveButton.SetActive(false);
         shopMenuUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void ShopExit()
@@ -49,6 +50,7 @@ public class ShopIsland : MonoBehaviour
         inventoryButton.SetActive(true);
         shopActiveButton.SetActive(true);
         shopMenuUI.SetActive(false);
+        Time.timeScale = 1f;
     }
 
 }
