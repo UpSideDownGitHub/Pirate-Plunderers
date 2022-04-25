@@ -8,7 +8,7 @@ public class sceneloader : MonoBehaviour
     {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + -1);
     }
-    public void resume()
+    public void replay()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

@@ -544,7 +544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126, y: 45}
+  m_AnchoredPosition: {x: 158, y: 45}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &43909516
@@ -7833,7 +7833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.0852, y: -64}
+  m_AnchoredPosition: {x: 41, y: -62}
   m_SizeDelta: {x: 180.1703, y: 42.3263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278010213
@@ -7887,6 +7887,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1534803597}
+        m_TargetAssemblyTypeName: sceneloader, Assembly-CSharp
+        m_MethodName: replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8244,7 +8256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1349962472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40512,8 +40524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: -122}
-  m_SizeDelta: {x: 180.17, y: 40.326}
+  m_AnchoredPosition: {x: 41, y: -123.4}
+  m_SizeDelta: {x: 180.17, y: 42.326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2013514567
 MonoBehaviour:
@@ -40558,7 +40570,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2013514568}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1534803597}
+        m_TargetAssemblyTypeName: sceneloader, Assembly-CSharp
+        m_MethodName: backtomennu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2013514568
 MonoBehaviour:
   m_ObjectHideFlags: 0
