@@ -32,10 +32,11 @@ public class Bomb : MonoBehaviour
     }
     public void DamagePlayer()
     {
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (Vector3.Distance(player.transform.position, transform.position) < ExplosionRadius)
         {
-            //Debug.Log("Damege Player");
+            //collision.gameObject.GetComponent<healthbar>().damage(damage);
         }
         Destroy(gameObject);
     }
