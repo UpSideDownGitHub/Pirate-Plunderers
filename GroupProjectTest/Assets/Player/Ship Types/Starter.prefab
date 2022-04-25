@@ -1511,6 +1511,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   cannonMain: {fileID: 8033231581522557619}
   sailMain: {fileID: 8033231581820807814}
+  playerMove: {fileID: 8033231581922864298}
 --- !u!1 &8033231581943979757
 GameObject:
   m_ObjectHideFlags: 0

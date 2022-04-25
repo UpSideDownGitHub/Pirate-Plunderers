@@ -7,42 +7,39 @@ public class InventoryMenu : MonoBehaviour
 {
 
 
-    public static bool GameIsPaused = false;
+    public GameObject joyStick;
+    public GameObject shootButton;
+    public GameObject miniMap;
+    public GameObject pauseButton;
+    public GameObject inventoryButton;
     public string newGameLevel;
     public GameObject inventoryMenuUI;
 
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-
-            }
-
-            else
-            {
-                Pause();
-
-            }
-        }
-    }
 
     public void Resume()
     {
+        joyStick.SetActive(true);
+        shootButton.SetActive(true);
+        miniMap.SetActive(true);
+        pauseButton.SetActive(true);
+        inventoryButton.SetActive(true);
         inventoryMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        
     }
 
     public void Pause()
     {
+        miniMap.SetActive(false);
+        shootButton.SetActive(false);
+        joyStick.SetActive(false);
+        pauseButton.SetActive(false);
+        inventoryButton.SetActive(false);
         inventoryMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        
 
     }
 

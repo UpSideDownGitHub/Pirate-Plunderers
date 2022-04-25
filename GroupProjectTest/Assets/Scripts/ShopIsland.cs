@@ -9,42 +9,48 @@ public class ShopIsland : MonoBehaviour
 
     public static bool GameIsPaused = false;
     public string newGameLevel;
+    public GameObject shopActiveButton;
     public GameObject shopMenuUI;
+     public GameObject joyStick;
+    public GameObject shootButton;
+    public GameObject miniMap;
+    public GameObject pauseButton;
+    public GameObject inventoryButton;
 
 
     // Update is called once per frame
     void OnTriggerEnter2D (Collider2D collision)
     {
-        
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                if (GameIsPaused)
-                {
-                    Resume();
-
-                }
-
-                else
-                {
-                    Pause();
-
-                }
-            }
-        
+        shopActiveButton.SetActive(true);          
     }
 
-    public void Resume()
+    void OnTriggerExit2D(Collider2D collision)
     {
-        shopMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        shopActiveButton.SetActive(false);
     }
 
-    void Pause()
+    public void ShopEnter()
     {
+        miniMap.SetActive(false);
+        shootButton.SetActive(false);
+        joyStick.SetActive(false);
+        pauseButton.SetActive(false);
+        inventoryButton.SetActive(false);
+        shopActiveButton.SetActive(false);
         shopMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
-
     }
+
+    public void ShopExit()
+    {
+        miniMap.SetActive(true);
+        shootButton.SetActive(true);
+        joyStick.SetActive(true);
+        pauseButton.SetActive(true);
+        inventoryButton.SetActive(true);
+        shopActiveButton.SetActive(true);
+        shopMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
 }

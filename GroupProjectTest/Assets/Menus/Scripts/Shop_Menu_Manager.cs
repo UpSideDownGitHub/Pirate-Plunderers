@@ -12,6 +12,7 @@ public class Shop_Menu_Manager : MonoBehaviour
     public GameObject prefabButton;
     int currentUpgradeType = 999;
     int currentItemSelected = 999;
+    public GameObject currentButton;
 
     [Header("Information/Stats Screens")]
     public GameObject[] cannonScreenUI;
@@ -21,8 +22,6 @@ public class Shop_Menu_Manager : MonoBehaviour
 
     [Header("Random Items")]
     public int ammount;
-    public int minAmmount, maxAmmount;
-    public List<int> allreadySpawned = new List<int>();
 
     [Header("Coins")]
     public TextMeshProUGUI coins;
@@ -36,6 +35,7 @@ public class Shop_Menu_Manager : MonoBehaviour
             temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Cannons[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
+                currentButton = temp;
                 CannonPressed(id);
             });
         }
@@ -44,6 +44,7 @@ public class Shop_Menu_Manager : MonoBehaviour
             temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Sails[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
+                currentButton = temp;
                 SailPressed(id);
             });
         }
@@ -52,6 +53,7 @@ public class Shop_Menu_Manager : MonoBehaviour
             temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Colours[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
+                currentButton = temp;
                 ColourPressed(id);
             });
         }
@@ -60,6 +62,7 @@ public class Shop_Menu_Manager : MonoBehaviour
             temp.GetComponentInChildren<TextMeshProUGUI>().text = SaveData.ShipUpgrade.Sizes[id].name;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
+                currentButton = temp;
                 SizePressed(id);
             });
         }
@@ -179,32 +182,56 @@ public class Shop_Menu_Manager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        ammount = Random.Range(minAmmount, maxAmmount);
-        for (int i = 0; i < ammount; i++)
+        List<int> itemsToBuy_Type = new List<int>();
+        List<int> itemsToBuy_ID = new List<int>();
+
+        foreach (var cannon in SaveData.ShipUpgrade.Cannons)
         {
-            int type = Random.Range(0, 4);
-            int id = 0;
-            if (type == 0)
-                id = Random.Range(0, SaveData.ShipUpgrade.Cannons.Length);
-            else if (type == 1)
-                id = Random.Range(0, SaveData.ShipUpgrade.Sails.Length);
-            else if (type == 2)
-                id = Random.Range(0, SaveData.ShipUpgrade.Colours.Length);
-            else if (type == 3)
-                id = Random.Range(0, SaveData.ShipUpgrade.Sizes.Length);
-            bool allreadyThere = false;
-            foreach (int num in allreadySpawned)
+            if (cannon.buyable && !cannon.unlocked)
             {
-                if (num == id)
-                {
-                    allreadyThere = true;
-                    break;
-                }
+                itemsToBuy_Type.Add(0);
+                itemsToBuy_ID.Add(cannon.ID);
             }
-            if (allreadyThere)
-                continue;
-            allreadySpawned.Add(id);
-            PopulateGrid(id, type);
+        }
+        foreach (var sail in SaveData.ShipUpgrade.Sails)
+        {
+            if (sail.buyable && !sail.unlocked)
+            {
+                itemsToBuy_Type.Add(1);
+                itemsToBuy_ID.Add(sail.ID);
+            }
+        }
+        foreach (var colour in SaveData.ShipUpgrade.Colours)
+        {
+            if (colour.buyable && !colour.unlocked)
+            {
+                itemsToBuy_Type.Add(2);
+                itemsToBuy_ID.Add(colour.ID);
+            }
+        }
+        foreach (var size in SaveData.ShipUpgrade.Sizes)
+        {
+            if (size.buyable && !size.unlocked)
+            {
+                itemsToBuy_Type.Add(3);
+                itemsToBuy_ID.Add(size.ID);
+            }
+        }
+        try
+        {
+
+            ammount = Random.Range(1, itemsToBuy_Type.Count);
+            for (int i = 0; i < ammount; i++)
+            {
+                int itemToSpawn = Random.Range(0, itemsToBuy_Type.Count);
+                PopulateGrid(itemsToBuy_ID[itemToSpawn], itemsToBuy_Type[itemToSpawn]);
+                itemsToBuy_Type.RemoveAt(itemToSpawn);
+                itemsToBuy_ID.RemoveAt(itemToSpawn);
+            }
+        }
+        catch
+        {
+            // NO ITEMS LEFT
         }
     }
 
@@ -217,7 +244,65 @@ public class Shop_Menu_Manager : MonoBehaviour
 
     public void Buy()
     {
+        if (currentItemSelected != 999 & currentUpgradeType != 999)
+        {
+            var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            if (currentUpgradeType == 0)
+            {
+                if (SaveData.ShipUpgrade.Cannons[currentItemSelected].buyable && !SaveData.ShipUpgrade.Cannons[currentItemSelected].unlocked)
+                {
+                    if (SaveData.progression.coins - SaveData.ShipUpgrade.Cannons[currentItemSelected].price >= 0)
+                    {
+                        SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Cannons[currentItemSelected].price;
+                        SaveData.ShipUpgrade.Cannons[currentItemSelected].unlocked = true;
+                        SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                    }
+                }
 
+            }
+            else if (currentUpgradeType == 1)
+            {
+                if (SaveData.ShipUpgrade.Sails[currentItemSelected].buyable && !SaveData.ShipUpgrade.Sails[currentItemSelected].unlocked)
+                {
+                    if (SaveData.progression.coins - SaveData.ShipUpgrade.Sails[currentItemSelected].price >= 0)
+                    {
+                        SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Sails[currentItemSelected].price;
+                        SaveData.ShipUpgrade.Sails[currentItemSelected].unlocked = true;
+                        SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                    }
+                }
+            }
+            else if (currentUpgradeType == 2)
+            {
+                if (SaveData.ShipUpgrade.Colours[currentItemSelected].buyable && !SaveData.ShipUpgrade.Colours[currentItemSelected].unlocked)
+                {
+                    if (SaveData.progression.coins - SaveData.ShipUpgrade.Colours[currentItemSelected].price >= 0)
+                    {
+                        SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Colours[currentItemSelected].price;
+                        SaveData.ShipUpgrade.Colours[currentItemSelected].unlocked = true;
+                        SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                    }
+                }
+            }
+            else if (currentUpgradeType == 3)
+            {
+                if (SaveData.ShipUpgrade.Sizes[currentItemSelected].buyable && !SaveData.ShipUpgrade.Sizes[currentItemSelected].unlocked)
+                {
+                    if (SaveData.progression.coins - SaveData.ShipUpgrade.Sizes[currentItemSelected].price >= 0)
+                    {
+                        SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Sizes[currentItemSelected].price;
+                        SaveData.ShipUpgrade.Sizes[currentItemSelected].unlocked = true;
+                        SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                    }
+                }
+            }
+            coins.text = SaveData.progression.coins.ToString();
+
+            Destroy(currentButton);
+            currentUpgradeType = 999;
+            currentItemSelected = 999;
+        }
+        
     }
 
     public void Back()

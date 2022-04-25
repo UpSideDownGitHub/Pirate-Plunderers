@@ -6,47 +6,38 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
-
-    public static bool GameIsPaused = false;
     public string newGameLevel;
     public GameObject pauseMenuUI;
+    public GameObject joyStick;
+    public GameObject miniMap;
+    public GameObject pauseButton;
+    public GameObject inventoryButton;
+    public GameObject shootButton;
 
 
-    // Update is called once per frame
-    void Update()
+    public void Pause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-
-            }
-
-            else
-            {
-                Pause();
-
-            }
-        }
+        joyStick.SetActive(false);
+        pauseButton.SetActive(false);
+        inventoryButton.SetActive(false);
+        shootButton.SetActive(false);
+        miniMap.SetActive(false);
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+       
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        pauseButton.SetActive(true);
+        inventoryButton.SetActive(true);
+        shootButton.SetActive(true);
+        miniMap.SetActive(true);
+        joyStick.SetActive(true);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        
     }
-
-    public void Pause()
-
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-
-    }
-
 
     public void LoadMenu()
 
