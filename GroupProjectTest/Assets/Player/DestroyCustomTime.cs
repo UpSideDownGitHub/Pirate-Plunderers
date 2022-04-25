@@ -25,8 +25,7 @@ public class DestroyCustomTime : MonoBehaviour
         }
         if (collision.tag == "Player" && enemy_bullet)
         {
-            //damage
-            //DEAL DAMAGE TO THE PLAYER
+            collision.gameObject.GetComponent<healthbar>().damage(damage);
             Destroy(gameObject);
         }
         else if (collision.tag == "Walls")

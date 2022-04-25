@@ -19,6 +19,11 @@ public class healthbar : MonoBehaviour
     Deathcanvus.SetActive(false);
 }
 
+    public void damage(float damage)
+    {
+        currenthealth -= damage;
+    }
+
     void Update()
     {
         healthbarslider.value = currenthealth;
