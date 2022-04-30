@@ -8,37 +8,37 @@ public class ShopIsland : MonoBehaviour
 
 
     public static bool GameIsPaused = false;
-    public string newGameLevel;
     public GameObject shopActiveButton;
     public GameObject shopMenuUI;
-     public GameObject joyStick;
+    public GameObject homeActiveButton;
+    public GameObject homeMenuUI;
+    public GameObject joyStick;
     public GameObject shootButton;
     public GameObject miniMap;
-    public GameObject pauseButton;
-    public GameObject inventoryButton;
+
+    public bool home = false;
 
 
     // Update is called once per frame
-    void OnTriggerEnter2D (Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        shopActiveButton.SetActive(true);          
+        if (collision.tag == "Player")
+        {
+            if (home)
+                homeActiveButton.SetActive(true);
+            else
+                shopActiveButton.SetActive(true);
+        }
     }
-
     void OnTriggerExit2D(Collider2D collision)
     {
-        shopActiveButton.SetActive(false);
-    }
-
-    public void ShopEnter()
-    {
-        miniMap.SetActive(false);
-        shootButton.SetActive(false);
-        joyStick.SetActive(false);
-        pauseButton.SetActive(false);
-        inventoryButton.SetActive(false);
-        shopActiveButton.SetActive(false);
-        shopMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        if (collision.tag == "Player")
+        {
+            if (home)
+                homeActiveButton.SetActive(false);
+            else
+                shopActiveButton.SetActive(false);
+        }
     }
 
     public void ShopExit()
@@ -46,11 +46,46 @@ public class ShopIsland : MonoBehaviour
         miniMap.SetActive(true);
         shootButton.SetActive(true);
         joyStick.SetActive(true);
-        pauseButton.SetActive(true);
-        inventoryButton.SetActive(true);
+        //pauseButton.SetActive(true);
+        //inventoryButton.SetActive(true);
         shopActiveButton.SetActive(true);
         shopMenuUI.SetActive(false);
         Time.timeScale = 1f;
+    }
+    public void ShopEnter()
+    {
+        miniMap.SetActive(false);
+        shootButton.SetActive(false);
+        joyStick.SetActive(false);
+        //pauseButton.SetActive(false);
+        //inventoryButton.SetActive(false);
+        shopActiveButton.SetActive(false);
+        shopMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+
+    public void homeExit()
+    {
+        miniMap.SetActive(true);
+        shootButton.SetActive(true);
+        joyStick.SetActive(true);
+        //pauseButton.SetActive(true);
+        //inventoryButton.SetActive(true);
+        homeActiveButton.SetActive(true);
+        homeMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void homeEnter()
+    {
+        miniMap.SetActive(false);
+        shootButton.SetActive(false);
+        joyStick.SetActive(false);
+        //pauseButton.SetActive(false);
+        //inventoryButton.SetActive(false);
+        homeActiveButton.SetActive(false);
+        homeMenuUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 
 }

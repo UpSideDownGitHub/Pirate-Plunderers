@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject joyStick;
     public GameObject miniMap;
     public GameObject pauseButton;
-    public GameObject inventoryButton;
     public GameObject shootButton;
 
 
@@ -19,7 +18,6 @@ public class PauseMenu : MonoBehaviour
     {
         joyStick.SetActive(false);
         pauseButton.SetActive(false);
-        inventoryButton.SetActive(false);
         shootButton.SetActive(false);
         miniMap.SetActive(false);
         pauseMenuUI.SetActive(true);
@@ -31,7 +29,6 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         pauseButton.SetActive(true);
-        inventoryButton.SetActive(true);
         shootButton.SetActive(true);
         miniMap.SetActive(true);
         joyStick.SetActive(true);
