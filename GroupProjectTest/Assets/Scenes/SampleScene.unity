@@ -1075,14 +1075,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f06a43f0ab834040b485021bec6cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameLevel: 
   shopActiveButton: {fileID: 1037737296}
   shopMenuUI: {fileID: 1866151026}
+  homeActiveButton: {fileID: 0}
+  homeMenuUI: {fileID: 0}
   joyStick: {fileID: 939467328}
   shootButton: {fileID: 1117798130}
   miniMap: {fileID: 626651532}
-  pauseButton: {fileID: 2012766147}
-  inventoryButton: {fileID: 1855035098}
+  home: 0
 --- !u!1 &126378759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5714,7 +5714,6 @@ MonoBehaviour:
   joyStick: {fileID: 939467328}
   miniMap: {fileID: 626651532}
   pauseButton: {fileID: 2012766147}
-  inventoryButton: {fileID: 1855035098}
   shootButton: {fileID: 1117798130}
 --- !u!114 &825078875
 MonoBehaviour:
@@ -5747,14 +5746,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f06a43f0ab834040b485021bec6cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameLevel: 
   shopActiveButton: {fileID: 1037737296}
   shopMenuUI: {fileID: 523214281}
+  homeActiveButton: {fileID: 0}
+  homeMenuUI: {fileID: 0}
   joyStick: {fileID: 0}
   shootButton: {fileID: 0}
   miniMap: {fileID: 0}
-  pauseButton: {fileID: 0}
-  inventoryButton: {fileID: 0}
+  home: 0
 --- !u!1 &841581767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5422612587950615289, guid: e3f4a91d7b8663841921149c904e59ff, type: 3}
@@ -7041,7 +7040,6 @@ MonoBehaviour:
   joyStick: {fileID: 939467328}
   miniMap: {fileID: 626651532}
   pauseButton: {fileID: 2012766147}
-  inventoryButton: {fileID: 1855035098}
   shootButton: {fileID: 1117798130}
 --- !u!1 &1124494765
 GameObject:
@@ -8256,7 +8254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1349962472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41280,7 +41278,6 @@ MonoBehaviour:
   joyStick: {fileID: 0}
   miniMap: {fileID: 0}
   pauseButton: {fileID: 0}
-  inventoryButton: {fileID: 0}
   shootButton: {fileID: 0}
 --- !u!114 &2134876554
 MonoBehaviour:
@@ -41299,7 +41296,6 @@ MonoBehaviour:
   joyStick: {fileID: 0}
   miniMap: {fileID: 0}
   pauseButton: {fileID: 0}
-  inventoryButton: {fileID: 0}
   shootButton: {fileID: 0}
 --- !u!114 &2134876555
 MonoBehaviour:
@@ -41313,14 +41309,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f06a43f0ab834040b485021bec6cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameLevel: 
   shopActiveButton: {fileID: 0}
   shopMenuUI: {fileID: 523214281}
+  homeActiveButton: {fileID: 0}
+  homeMenuUI: {fileID: 0}
   joyStick: {fileID: 0}
   shootButton: {fileID: 0}
   miniMap: {fileID: 0}
-  pauseButton: {fileID: 0}
-  inventoryButton: {fileID: 0}
+  home: 0
 --- !u!114 &2134876556
 MonoBehaviour:
   m_ObjectHideFlags: 0
