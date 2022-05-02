@@ -36,6 +36,7 @@ public class MoveControl : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+ 
             oneTouch = Input.GetTouch(0);
 
             touchPosition = Camera.main.ScreenToWorldPoint(oneTouch.position);
@@ -116,6 +117,6 @@ public class MoveControl : MonoBehaviour
             moveDirection *= moveLimiter;
         }
         */
-
+        
     }
 }
