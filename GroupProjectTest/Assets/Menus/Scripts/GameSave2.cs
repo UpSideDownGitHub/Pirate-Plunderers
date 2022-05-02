@@ -94,7 +94,7 @@ public class GenralSaveContainer
         "<range > 100 </range >\n" +
         "<description > mortor that can shoot bombs that deal massive AOE damage </description >\n" +
         "<unlocked > false </unlocked >\n" +
-        "<buyable > false </buyable >\n" +
+        "<buyable > true </buyable >\n" +
         "<price > 0 </price >\n" +
       "</Cannon >\n" +
       "<Cannon ID = \"4\" >\n" +
@@ -121,7 +121,7 @@ public class GenralSaveContainer
         "<range > 100 </range >\n" +
         "<description > the harpoon deals massive damage with decent fire rate </description >\n" +
         "<unlocked > false </unlocked >\n" +
-        "<buyable > true </buyable >\n" +
+        "<buyable > false </buyable >\n" +
         "<price > 5000 </price >\n" +
       "</Cannon >\n" +
       "<Cannon ID = \"7\" >\n" +

@@ -110,11 +110,13 @@ public class EnemyEncounter : MonoBehaviour
             {
                 newUnlock.SetActive(true);
                 saveData.progression.firstBossDefeated = true;
+                saveData.ShipUpgrade.Cannons[5].unlocked = true;
             }
             else if (!saveData.progression.finalBossDefeated && hasBoss && bossID == 1)
             {
                 newUnlock.SetActive(true);
                 saveData.progression.finalBossDefeated = true;
+                saveData.ShipUpgrade.Cannons[6].unlocked = true;
             }
             else
                 newUnlock.SetActive(false);
