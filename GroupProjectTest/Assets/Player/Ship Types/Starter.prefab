@@ -533,6 +533,9 @@ MonoBehaviour:
   cannonRotateSpeed: 200
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!1 &8033231581502751468
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +854,9 @@ MonoBehaviour:
   cannonRotateSpeed: 150
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!1 &8033231581681887184
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +968,9 @@ MonoBehaviour:
   cannonRotateSpeed: 200
   doOnce: 1
   shootEffect: {fileID: 6849790360671737449, guid: 37250729ab2830843a1564d40fdd7651, type: 3}
+  shootingSoundEffect: {fileID: 8300000, guid: 8e902759bccd2b341b89cded3195d8ff, type: 3}
+  volume: 0.25
+  soundManager: {fileID: 0}
 --- !u!1 &8033231581757379042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1166,9 @@ MonoBehaviour:
   cannonRotateSpeed: 100
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!1 &8033231581820807814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1302,7 @@ GameObject:
   - component: {fileID: 8033231581922864298}
   - component: {fileID: 8033231581922864299}
   - component: {fileID: 4449921870144724664}
+  - component: {fileID: 3437892131864326024}
   m_Layer: 0
   m_Name: Starter
   m_TagString: Player
@@ -1661,6 +1674,21 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &3437892131864326024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033231581922864292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6674e18eb7467a2468800753320aa7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbarslider: {fileID: 0}
+  maxHealth: 2628.74
+  Deathcanvus: {fileID: 0}
 --- !u!1 &8033231581943979757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1884,9 @@ MonoBehaviour:
   cannonRotateSpeed: 200
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!1 &8033231582235999250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2256,9 @@ MonoBehaviour:
   cannonRotateSpeed: 200
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!1 &8033231582349120893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,6 +2454,9 @@ MonoBehaviour:
   cannonRotateSpeed: 200
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!1 &8033231582388110376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,3 +2652,6 @@ MonoBehaviour:
   cannonRotateSpeed: 250
   doOnce: 1
   shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}

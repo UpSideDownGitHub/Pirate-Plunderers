@@ -26,6 +26,12 @@ public class Shooting : MonoBehaviour
     [Header("Effects")]
     public GameObject shootEffect;
 
+    [Header("Sounds")]
+    public AudioClip shootingSoundEffect;
+    [Range(0, 1)]
+    public float volume;
+    public Sounds soundManager;
+
 
 
     // Start is called before the first frame update
@@ -78,9 +84,9 @@ public class Shooting : MonoBehaviour
                 Quaternion direction = new Quaternion(firePoints[i].transform.rotation.x, firePoints[i].transform.rotation.y, firePoints[i].transform.rotation.z, firePoints[i].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(bullet, firePoints[i].transform.position, direction);
                 TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = TemporaryBulletHandler.transform.up * bulletForce;
-
                 Instantiate(shootEffect, firePoints[i].transform);
             }
+            soundManager.playSoundEffect(shootingSoundEffect, volume);
         }
 
 
