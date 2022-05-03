@@ -32,8 +32,6 @@ public class healthbar : MonoBehaviour
         if (currenthealth <= 0)
         {
             Instantiate(Playerdeath, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-
             Invoke ("delay", 2f);
 
         }
