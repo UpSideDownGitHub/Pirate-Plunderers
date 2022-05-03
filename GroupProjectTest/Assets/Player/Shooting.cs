@@ -23,6 +23,9 @@ public class Shooting : MonoBehaviour
     public float cannonRotateSpeed;
     public bool doOnce = true;
 
+    [Header("Effects")]
+    public GameObject shootEffect;
+
 
 
     // Start is called before the first frame update
@@ -75,6 +78,8 @@ public class Shooting : MonoBehaviour
                 Quaternion direction = new Quaternion(firePoints[i].transform.rotation.x, firePoints[i].transform.rotation.y, firePoints[i].transform.rotation.z, firePoints[i].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(bullet, firePoints[i].transform.position, direction);
                 TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = TemporaryBulletHandler.transform.up * bulletForce;
+
+                Instantiate(shootEffect, firePoints[i].transform);
             }
         }
 
