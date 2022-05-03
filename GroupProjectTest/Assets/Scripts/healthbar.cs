@@ -11,13 +11,14 @@ public class healthbar : MonoBehaviour
     public static float currenthealth;
 
     public GameObject Deathcanvus;
+    public ParticleSystem Playerdeath;
 
 
     private void Start()
-{
-    currenthealth = maxHealth;
-    Deathcanvus.SetActive(false);
-}
+    {
+        currenthealth = maxHealth;
+        Deathcanvus.SetActive(false);
+    }
 
     public void damage(float damage)
     {
@@ -30,9 +31,22 @@ public class healthbar : MonoBehaviour
 
         if (currenthealth <= 0)
         {
+            Instantiate(Playerdeath, transform.position, Quaternion.identity);
+            //Destroy(gameObject);
+
+            Invoke ("delay", 2f);
+
+        }
+    }
+            public void delay()
+            {
+            Destroy(gameObject);
             Deathcanvus.SetActive(true);
             Time.timeScale = 0;
 
+            }
         }
-}
-}
+ 
+ 
+
+
