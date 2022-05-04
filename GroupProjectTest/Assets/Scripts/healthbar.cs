@@ -36,14 +36,13 @@ public class healthbar : MonoBehaviour
 
         }
     }
-            public void delay()
-            {
-            Destroy(gameObject);
-            Deathcanvus.SetActive(true);
-            Time.timeScale = 0;
-
-            }
-        }
+    public void delay()
+    {
+        Destroy(gameObject);
+        Deathcanvus.SetActive(true);
+        Time.timeScale = 0;
+    }
+}
  
  
 

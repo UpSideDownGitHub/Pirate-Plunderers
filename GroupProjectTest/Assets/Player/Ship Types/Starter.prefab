@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 8033231581922864298}
   - component: {fileID: 8033231581922864299}
   - component: {fileID: 4449921870144724664}
-  - component: {fileID: 3437892131864326024}
+  - component: {fileID: 1584652569211122140}
   m_Layer: 0
   m_Name: Starter
   m_TagString: Player
@@ -1674,7 +1674,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &3437892131864326024
+--- !u!114 &1584652569211122140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1687,8 +1687,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarslider: {fileID: 0}
-  maxHealth: 2628.74
+  maxHealth: 100
   Deathcanvus: {fileID: 0}
+  Playerdeath: {fileID: 6766162256118111432, guid: 1bbedb940e8ff7743892967699e3d35c, type: 3}
 --- !u!1 &8033231581943979757
 GameObject:
   m_ObjectHideFlags: 0
