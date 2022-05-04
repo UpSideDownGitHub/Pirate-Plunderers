@@ -10,6 +10,6 @@ public class sceneloader : MonoBehaviour
     }
     public void replay()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("GoncaloSampleScene");
     }
 }

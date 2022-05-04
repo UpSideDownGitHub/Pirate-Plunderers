@@ -32,7 +32,7 @@ public class healthbar : MonoBehaviour
         if (currenthealth <= 0)
         {
             Instantiate(Playerdeath, transform.position, Quaternion.identity);
-            Invoke ("delay", 2f);
+            Invoke ("delay", 1f);
 
         }
     }
