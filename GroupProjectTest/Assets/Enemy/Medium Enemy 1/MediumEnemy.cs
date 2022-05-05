@@ -32,12 +32,17 @@ public class MediumEnemy : MonoBehaviour
     [Header("Rotation")]
     public float rotationSpeed;
 
+    [Header("Seen Player")]
+    public bool seenPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
         var agent = GetComponentInChildren<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        seenPlayer = false;
 
         Player = GameObject.FindGameObjectWithTag("Player");
         NavMesh.speed = Speed;
@@ -59,6 +64,7 @@ public class MediumEnemy : MonoBehaviour
 
         if (distance < maxdistacne)
         {
+            seenPlayer = true;
             // TO DRAW THE PATH THAT IS CURRENTLY BEING FOLLOWED
             /*
             var path = NavMesh.path;

@@ -362,8 +362,11 @@ MonoBehaviour:
   EnemySpawner: {fileID: 0}
   weightOfEnemy: 2
   enemyNumber: 1
+  subNumber: 2
   xp: {fileID: 0}
   xpAmmount: 5
+  player: {fileID: 0}
+  seenPlayer: 0
 --- !u!195 &4980609500729973145
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -445,6 +448,7 @@ MonoBehaviour:
   sideCannonForce: 5
   sideCannon_RandomDeviation: 0.5
   rotationSpeed: 150
+  seenPlayer: 0
 --- !u!1 &4980609501146788384
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,11 +42,14 @@ public class Random_Spawns : MonoBehaviour
     public void spawn()
     {
         Vector2 point;
+        point = Random.insideUnitCircle.normalized * Random.Range(minRadius, maxRadius);
+        point += (Vector2)transform.position;
+
         do
         {
             point = Random.insideUnitCircle.normalized * Random.Range(minRadius, maxRadius);
             point += (Vector2)transform.position;
-        } while (!NavMesh.SamplePosition(new Vector3(point.x, point.y, 0), out _, 0, NavMesh.AllAreas));
+        } while (!NavMesh.SamplePosition(new Vector3(point.x, point.y, 0), out _, 0.1f, NavMesh.AllAreas));
 
         List<int> toSpawn = new List<int>();
         int ran = Random.Range(0, 8);
@@ -56,7 +59,7 @@ public class Random_Spawns : MonoBehaviour
             toSpawn.Add(ran);
             for (int i = 0; i < Random.Range(minSmall, maxSmall); i++)
             {
-                toSpawn.Add(Random.Range(0,3));
+                toSpawn.Add(Random.Range(0, 3));
             }
         }
         else if (ran >= 3 && ran <= 5)
@@ -83,10 +86,11 @@ public class Random_Spawns : MonoBehaviour
             currentEnemies++;
             do
             {
+                randomRange = Vector2.zero;
                 randomRange.x += Random.Range(-maxRandomPlace, maxRandomPlace);
                 randomRange.y += Random.Range(-maxRandomPlace, maxRandomPlace);
                 point += randomRange;
-            } while (!NavMesh.SamplePosition(new Vector3(point.x, point.y, 0), out _, 0, NavMesh.AllAreas));
+            } while (!NavMesh.SamplePosition(new Vector3(point.x, point.y, 0), out _, 0.1f, NavMesh.AllAreas));
             Instantiate(Enemeies[enemy], point, Quaternion.identity);
         }
     }

@@ -37,12 +37,17 @@ public class MediumEnemy2 : MonoBehaviour
     [Header("Rotation")]
     public float rotationSpeed;
 
+    [Header("Seen Player")]
+    public bool seenPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
         var agent = GetComponentInChildren<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        seenPlayer = false;
 
         Player = GameObject.FindGameObjectWithTag("Player");
         NavMesh.speed = Speed;
@@ -64,6 +69,7 @@ public class MediumEnemy2 : MonoBehaviour
 
         if (distance < maxdistacne)
         {
+            seenPlayer = true;
             // ROTATION
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, NavMesh.velocity.normalized);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
