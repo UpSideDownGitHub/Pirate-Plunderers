@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &454526489034713968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802615912902582450}
+  - component: {fileID: 3698563608624999920}
+  m_Layer: 0
+  m_Name: Random Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802615912902582450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454526489034713968}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8033231581922864289}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3698563608624999920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454526489034713968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f7c02e30881a843a5b83e2cb48d221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemeies:
+  - {fileID: 240010028868832052, guid: 83a19c7aa9afd7340838e32dc9481f40, type: 3}
+  - {fileID: 6414866383773751958, guid: f41a77ce27b00064b81f18e1156f6087, type: 3}
+  - {fileID: 4980609500729973146, guid: fe8b180aa203c2345a1760f4311ccd6c, type: 3}
+  - {fileID: 4980609500729973146, guid: ca17f240fc5f4334f891d7e519bfb1ad, type: 3}
+  - {fileID: 4980609500729973146, guid: ca68f9870771eb14fa40d2ee66513ff3, type: 3}
+  - {fileID: 4980609500729973146, guid: dd8fd63826ad1eb47be7483d9b9d5b96, type: 3}
+  - {fileID: 4980609500729973146, guid: a5b4d179495497942887fddd2349a204, type: 3}
+  - {fileID: 4980609500729973146, guid: c704789a4cb4bfe438c0d2bd651ff4e1, type: 3}
+  currentEnemies: 0
+  canSpawn: 1
+  waitTimeMin: 7
+  waitTimeMax: 15
+  minSmall: 1
+  maxSmall: 3
+  minMedium: 0
+  maxMedium: 2
+  minLarge: 0
+  maxLarge: 1
+  minRadius: 28
+  maxRadius: 30
+  maxRandomPlace: 3
+  randomRange: {x: 0, y: 0}
 --- !u!1 &1595399016953403368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1137,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231581477420438}
   cannonRotateSpeed: 200
   doOnce: 1
@@ -1391,6 +1459,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231581574349095}
   cannonRotateSpeed: 150
   doOnce: 1
@@ -1505,6 +1574,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231581681887184}
   cannonRotateSpeed: 200
   doOnce: 1
@@ -1703,6 +1773,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231581773947675}
   cannonRotateSpeed: 100
   doOnce: 1
@@ -1867,6 +1938,7 @@ Transform:
   - {fileID: 8033231581820807815}
   - {fileID: 3525189305554914785}
   - {fileID: 1993343540745380952}
+  - {fileID: 1802615912902582450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2441,6 +2513,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231582118105999}
   cannonRotateSpeed: 200
   doOnce: 1
@@ -2813,6 +2886,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231582278751403}
   cannonRotateSpeed: 200
   doOnce: 1
@@ -3011,6 +3085,7 @@ MonoBehaviour:
   shootingTime: 2
   reloadTime: 1
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231582356568798}
   cannonRotateSpeed: 200
   doOnce: 1
@@ -3209,6 +3284,7 @@ MonoBehaviour:
   shootingTime: 0
   reloadTime: 0
   aimingJoystick: {fileID: 0}
+  movementJoystick: {fileID: 0}
   cannonMain: {fileID: 8033231582561174625}
   cannonRotateSpeed: 250
   doOnce: 1

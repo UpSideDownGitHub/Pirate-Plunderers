@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+
 public class Health : MonoBehaviour
 {
     [Header("Health")]
@@ -19,6 +20,9 @@ public class Health : MonoBehaviour
     [Header("XP")]
     public XP xp;
     public int xpAmmount;
+
+    [Header("Random Enemy Spawner")]
+    public Random_Spawns player;
 
     // Start is called before the first frame update
     public void Start()
@@ -44,6 +48,12 @@ public class Health : MonoBehaviour
             if (partOfEncounter && !allreadyDead)
             {
                 EnemySpawner.CurrentEnemysDecrease(weightOfEnemy, enemyNumber);
+                allreadyDead = true;
+            }
+            else if (!partOfEncounter && !allreadyDead)
+            {
+                player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Random_Spawns>();
+                player.decreaseCurrentEnemy();
                 allreadyDead = true;
             }
         }
