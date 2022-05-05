@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -15,6 +16,10 @@ public class Health : MonoBehaviour
     public int weightOfEnemy;
     public int enemyNumber;
 
+    [Header("XP")]
+    public XP xp;
+    public int xpAmmount;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -29,6 +34,13 @@ public class Health : MonoBehaviour
         if (Current_Health <= 0)
         {
             Destroy(gameObject);
+
+            GenralSaveContainer saveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            saveData.progression.xp += xpAmmount;
+            saveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            xp = GameObject.FindGameObjectWithTag("XP").GetComponent<XP>();
+            xp.updateXP();
+
             if (partOfEncounter && !allreadyDead)
             {
                 EnemySpawner.CurrentEnemysDecrease(weightOfEnemy, enemyNumber);

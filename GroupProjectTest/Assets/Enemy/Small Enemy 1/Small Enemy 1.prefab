@@ -105,9 +105,12 @@ MonoBehaviour:
   Max_Health: 1000
   Current_Health: 0
   partOfEncounter: 0
+  allreadyDead: 0
   EnemySpawner: {fileID: 0}
   weightOfEnemy: 1
   enemyNumber: 0
+  xp: {fileID: 0}
+  xpAmmount: 2
 --- !u!114 &240010028868832054
 MonoBehaviour:
   m_ObjectHideFlags: 0
