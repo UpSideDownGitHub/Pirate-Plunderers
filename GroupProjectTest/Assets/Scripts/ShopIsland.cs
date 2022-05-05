@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ShopIsland : MonoBehaviour
 {
-
-
     public static bool GameIsPaused = false;
     public GameObject shopActiveButton;
     public GameObject shopMenuUI;
@@ -17,6 +15,9 @@ public class ShopIsland : MonoBehaviour
     public GameObject miniMap;
 
     public bool home = false;
+
+    [Header("Customisations")]
+    public Customisations custom;
 
 
     // Update is called once per frame
@@ -75,6 +76,7 @@ public class ShopIsland : MonoBehaviour
         homeActiveButton.SetActive(true);
         homeMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        custom.loadCustomisations();
     }
     public void homeEnter()
     {

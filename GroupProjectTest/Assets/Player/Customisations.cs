@@ -30,6 +30,11 @@ public class Customisations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        loadCustomisations();
+    }
+
+    public void loadCustomisations()
+    {
         var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
 
         for (int i = 0; i < cannons.Length; i++)
@@ -50,10 +55,10 @@ public class Customisations : MonoBehaviour
         sprites[SaveData.loadout.colour].SetActive(true);
 
         spriteRenderer.sprite = Size[SaveData.loadout.size];
-        cannonMain.transform.position = new Vector3(spawnPositions[SaveData.loadout.size * 4].x, spawnPositions[SaveData.loadout.size * 4].y, -0.1f);
-        sailMain.transform.position = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 1].x, spawnPositions[SaveData.loadout.size * 4 + 1].y, -0.25f);
-        colourMain.transform.position = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 2].x, spawnPositions[SaveData.loadout.size * 4 + 2].y, -0.25f);
-        playerMain.transform.position = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 3].x, spawnPositions[SaveData.loadout.size * 4 + 3].y, -0.25f);
+        cannonMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4].x, spawnPositions[SaveData.loadout.size * 4].y, -0.1f);
+        sailMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 1].x, spawnPositions[SaveData.loadout.size * 4 + 1].y, -0.25f);
+        colourMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 2].x, spawnPositions[SaveData.loadout.size * 4 + 2].y, -0.25f);
+        playerMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 3].x, spawnPositions[SaveData.loadout.size * 4 + 3].y, -0.25f);
 
         Vector2 S = spriteRenderer.sprite.bounds.size;
         boxCollider2D.size = S;
