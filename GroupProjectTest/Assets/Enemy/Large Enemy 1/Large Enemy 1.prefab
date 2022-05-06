@@ -694,9 +694,16 @@ MonoBehaviour:
   Max_Health: 1000
   Current_Health: 0
   partOfEncounter: 0
+  allreadyDead: 0
   EnemySpawner: {fileID: 0}
   weightOfEnemy: 5
   enemyNumber: 2
+  subNumber: 0
+  xp: {fileID: 0}
+  xpAmmount: 10
+  player: {fileID: 0}
+  seenPlayer: 0
+  coins: 300
 --- !u!195 &4980609500729973145
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -788,6 +795,7 @@ MonoBehaviour:
   sideCannonForce: 5
   sideCannon_RandomDeviation: 0.3
   rotationSpeed: 110
+  seenPlayer: 0
 --- !u!1 &4980609501146788384
 GameObject:
   m_ObjectHideFlags: 0

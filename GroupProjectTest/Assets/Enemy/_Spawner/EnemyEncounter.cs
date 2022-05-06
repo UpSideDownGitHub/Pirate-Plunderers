@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,15 @@ using UnityEngine.UI;
 public class EnemyEncounter : MonoBehaviour
 {
     public bool startEncounter = false;
+    [Header("Score Information")]
+    public bool once = true;
+    public int[] coins = new int[4]{ 100, 200, 300, 500 };
+    public int[] ammountOfEachEnemy = new int[4] { 0, 0, 0, 0 };
+    
+    public GameObject endScreenUI;
+    public int coinsGained;
+    public TextMeshProUGUI coinsText;
+    public GameObject newUnlock;
 
     [Header("Encounter Information")]
     public int[] enemyWeights;
@@ -50,6 +60,9 @@ public class EnemyEncounter : MonoBehaviour
     public Slider waveSlider;
     public float sliderCurrentValue;
 
+    [Header("Tutorial")]
+    public bool tutorial;
+
     void Start()
     {
         wavesUI.SetActive(true);
@@ -57,6 +70,7 @@ public class EnemyEncounter : MonoBehaviour
         sliderCurrentValue = waveSlider.minValue;
         waveSlider.value = 0;
         GenerateEnemys();
+        once = true;
     }
 
     // Update is called once per frame
@@ -83,10 +97,34 @@ public class EnemyEncounter : MonoBehaviour
                 GenerateEnemys();
             }
         }
-        else if (currentEnemys == 0 && currentwave > maxWaves)
+        else if (currentEnemys == 0 && currentwave > maxWaves && once)
         {
             // RUN THE END OF THE ROUND CODE AND LET THE PLAYER WIN THE LOOT
+            once = false;
             wavesUI.SetActive(false);
+            endScreenUI.SetActive(true);
+            for (int i = 0; i < 4; i++)
+            {
+                coinsGained += ammountOfEachEnemy[i] * coins[i];
+            }
+            coinsText.text = "+" + coinsGained.ToString() + " Coins";
+            GenralSaveContainer saveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            if (!saveData.progression.firstBossDefeated && hasBoss && bossID == 0)
+            {
+                newUnlock.SetActive(true);
+                saveData.progression.firstBossDefeated = true;
+                saveData.ShipUpgrade.Cannons[5].unlocked = true;
+            }
+            else if (!saveData.progression.finalBossDefeated && hasBoss && bossID == 1)
+            {
+                newUnlock.SetActive(true);
+                saveData.progression.finalBossDefeated = true;
+                saveData.ShipUpgrade.Cannons[6].unlocked = true;
+            }
+            else
+                newUnlock.SetActive(false);
+            saveData.progression.coins += coinsGained;
+            saveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
         }
     }
 
@@ -101,14 +139,9 @@ public class EnemyEncounter : MonoBehaviour
                     break;
                 }
                 Spawn(enemynum);
-                Debug.Log("Weight: " + enemyWeights[enemynum].ToString());
                
                 currentEnemys += enemyWeights[enemynum];
                 ammountOfCurrentEnemy[enemynum] += 1;
-
-                Debug.Log("Current Ammount: " + ammountOfCurrentEnemy[enemynum].ToString());
-                Debug.Log("Current Enemies: " + currentEnemys.ToString());
-                Debug.Log("\n");
             }
         }
     }
@@ -117,13 +150,23 @@ public class EnemyEncounter : MonoBehaviour
     {
         GameObject enemyToSpawn;
         if (enemyNumber == 0)
+        {
+            ammountOfEachEnemy[0] += 1;
             enemyToSpawn = enimies[Random.Range(0, 2)];
+        }
         else if (enemyNumber == 1)
+        {
+            ammountOfEachEnemy[1] += 1;
             enemyToSpawn = enimies[Random.Range(3, 5)];
+        }
         else if (enemyNumber == 2)
-            enemyToSpawn = enimies[Random.Range(6, 7)];
+        {
+            ammountOfEachEnemy[2] += 1;
+            enemyToSpawn = enimies[Random.Range(6, 7)]; 
+        }
         else if (enemyNumber == 3)
         {
+            ammountOfEachEnemy[3] += 1;
             if (bossID == 0)
                 enemyToSpawn = enimies[8];
             else
@@ -132,13 +175,18 @@ public class EnemyEncounter : MonoBehaviour
         else
             enemyToSpawn = enimies[0];
 
-        Debug.Log("Enemy Name: " + enemyToSpawn.name);
 
         int place = Random.Range(0, spawnPositions.Length);
         Vector3 spawnPlace = Random.insideUnitCircle * radius + (Vector2)spawnPositions[place].transform.position;
         spawnPlace.z = -0.3f;
         GameObject temp = Instantiate(enemyToSpawn, spawnPlace, new Quaternion(0, 0, 0, 0));
         temp.GetComponent<Health>().partOfEncounter = true;
+        if (tutorial)
+        {
+            temp.GetComponent<Health>().dummyEnemy = true;
+            temp.GetComponent<Health>().Max_Health = 10;
+            temp.GetComponent<Health>().Current_Health = 10;
+        }
     }
     public void AddMaxEnemys()
     {

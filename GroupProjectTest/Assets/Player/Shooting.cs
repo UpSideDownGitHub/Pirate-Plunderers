@@ -19,9 +19,20 @@ public class Shooting : MonoBehaviour
 
     [Header("Cannon")]
     public Joystick aimingJoystick;
+    public Joystick movementJoystick;
     public GameObject cannonMain;
     public float cannonRotateSpeed;
     public bool doOnce = true;
+    Vector2 previous;
+
+    [Header("Effects")]
+    public GameObject shootEffect;
+
+    [Header("Sounds")]
+    public AudioClip shootingSoundEffect;
+    [Range(0, 1)]
+    public float volume;
+    public Sounds soundManager;
 
 
 
@@ -36,8 +47,28 @@ public class Shooting : MonoBehaviour
     {
         // ROTATE THE CANNON TO FACE CORRECT DIRECTION
         Vector2 moveDirection = aimingJoystick.joystickVec;
-        Quaternion toRotation2 = Quaternion.LookRotation(Vector3.forward, moveDirection);
-        cannonMain.transform.rotation = Quaternion.RotateTowards(cannonMain.transform.rotation, toRotation2, cannonRotateSpeed * Time.deltaTime);
+        if (moveDirection.Equals(new Vector2(0, 0)))
+        {
+            moveDirection = movementJoystick.joystickVec;
+            if (!moveDirection.Equals(new Vector2(0, 0)))
+            {
+                previous = moveDirection;
+                Quaternion toRotation2 = Quaternion.LookRotation(Vector3.forward, moveDirection);
+                cannonMain.transform.rotation = Quaternion.RotateTowards(cannonMain.transform.rotation, toRotation2, cannonRotateSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Quaternion toRotation2 = Quaternion.LookRotation(Vector3.forward, previous);
+                cannonMain.transform.rotation = Quaternion.RotateTowards(cannonMain.transform.rotation, toRotation2, cannonRotateSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            previous = moveDirection;
+            Quaternion toRotation2 = Quaternion.LookRotation(Vector3.forward, moveDirection);
+            cannonMain.transform.rotation = Quaternion.RotateTowards(cannonMain.transform.rotation, toRotation2, cannonRotateSpeed * Time.deltaTime);
+        }
+
 
         if (aimingJoystick.currentlyShooting && doOnce)
         {
@@ -75,7 +106,9 @@ public class Shooting : MonoBehaviour
                 Quaternion direction = new Quaternion(firePoints[i].transform.rotation.x, firePoints[i].transform.rotation.y, firePoints[i].transform.rotation.z, firePoints[i].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(bullet, firePoints[i].transform.position, direction);
                 TemporaryBulletHandler.GetComponent<Rigidbody2D>().velocity = TemporaryBulletHandler.transform.up * bulletForce;
+                Instantiate(shootEffect, firePoints[i].transform);
             }
+            soundManager.playSoundEffect(shootingSoundEffect, volume);
         }
 
 

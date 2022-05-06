@@ -13,15 +13,27 @@ public class Customisations : MonoBehaviour
     public Sprite[] Size;
     public SpriteRenderer spriteRenderer;
     public BoxCollider2D boxCollider2D;
+
+    [Header("Colour")]
+    public GameObject[] sprites;
+
+    [Header("Positions")]
     public Vector2[] spawnPositions;
     public GameObject cannonMain;
     public GameObject sailMain;
+    public GameObject colourMain;
+    public GameObject playerMain;
 
     [Header("Stat Changing")]
     public PlayerMove playerMove; // Speed & Turning Speed; 
 
     // Start is called before the first frame update
     void Start()
+    {
+        loadCustomisations();
+    }
+
+    public void loadCustomisations()
     {
         var SaveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
 
@@ -33,19 +45,26 @@ public class Customisations : MonoBehaviour
         {
             sails[i].SetActive(false);
         }
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            sprites[i].SetActive(false);
+        }
 
         cannons[SaveData.loadout.cannon].SetActive(true);
         sails[SaveData.loadout.sail].SetActive(true);
+        sprites[SaveData.loadout.colour].SetActive(true);
 
         spriteRenderer.sprite = Size[SaveData.loadout.size];
-        cannonMain.transform.position = spawnPositions[SaveData.loadout.size * 2];
-        sailMain.transform.position = spawnPositions[SaveData.loadout.size * 2 + 1];
+        cannonMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4].x, spawnPositions[SaveData.loadout.size * 4].y, -0.1f);
+        sailMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 1].x, spawnPositions[SaveData.loadout.size * 4 + 1].y, -0.25f);
+        colourMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 2].x, spawnPositions[SaveData.loadout.size * 4 + 2].y, -0.25f);
+        playerMain.transform.localPosition = new Vector3(spawnPositions[SaveData.loadout.size * 4 + 3].x, spawnPositions[SaveData.loadout.size * 4 + 3].y, -0.25f);
 
         Vector2 S = spriteRenderer.sprite.bounds.size;
         boxCollider2D.size = S;
 
         // setting variables based upon what is equipped
-        playerMove.playerSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].speed + SaveData.ShipUpgrade.Sails[SaveData.loadout.size].speed;
-        playerMove.rotationSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].turning + SaveData.ShipUpgrade.Sails[SaveData.loadout.size].turning;
+        playerMove.playerSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].speed + SaveData.ShipUpgrade.Sails[SaveData.loadout.sail].speed;
+        playerMove.rotationSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].turning + SaveData.ShipUpgrade.Sails[SaveData.loadout.sail].turning;
     }
 }

@@ -3954,7 +3954,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638708827}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7143427, w: 0.699796}
+  m_LocalRotation: {x: -0, y: -0, z: -0.010253294, w: 0.9999475}
   m_LocalPosition: {x: -0.4217, y: -2.9685, z: -5.0587406}
   m_LocalScale: {x: 0.73849946, y: 2.1808627, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3963,7 +3963,7 @@ Transform:
   - {fileID: 44329338}
   m_Father: {fileID: 1731088899}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -91.179}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.175}
 --- !u!114 &638708830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39333,6 +39333,10 @@ MonoBehaviour:
   cannonMain: {fileID: 0}
   cannonRotateSpeed: 0
   doOnce: 1
+  shootEffect: {fileID: 0}
+  shootingSoundEffect: {fileID: 0}
+  volume: 0
+  soundManager: {fileID: 0}
 --- !u!61 &2134876548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39552,6 +39556,7 @@ MonoBehaviour:
   healthbarslider: {fileID: 2002521455}
   maxHealth: 100
   Deathcanvus: {fileID: 1713065932}
+  Playerdeath: {fileID: 0}
 --- !u!1 &2137195354
 GameObject:
   m_ObjectHideFlags: 0

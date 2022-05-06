@@ -9,6 +9,7 @@ TagManager:
   - test
   - ENEMYSPAWNER
   - SHOOTBUTTON
+  - XP
   layers:
   - Default
   - TransparentFX
