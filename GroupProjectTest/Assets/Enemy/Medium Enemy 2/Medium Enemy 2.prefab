@@ -451,6 +451,7 @@ MonoBehaviour:
   xpAmmount: 5
   player: {fileID: 0}
   seenPlayer: 0
+  coins: 200
 --- !u!195 &4980609500729973145
 NavMeshAgent:
   m_ObjectHideFlags: 0

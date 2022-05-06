@@ -25,6 +25,7 @@ public class Health : MonoBehaviour
     [Header("Random Enemy Spawner")]
     public Random_Spawns player;
     public bool seenPlayer;
+    public int coins;
 
     // Start is called before the first frame update
     public void Start()
@@ -93,6 +94,11 @@ public class Health : MonoBehaviour
                 player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Random_Spawns>();
                 player.decreaseCurrentEnemy();
                 allreadyDead = true;
+
+                GenralSaveContainer saveData2 = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                saveData2.progression.coins += coins;
+                saveData2.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+
             }
         }
     }

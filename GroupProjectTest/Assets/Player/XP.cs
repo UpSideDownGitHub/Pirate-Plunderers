@@ -21,7 +21,7 @@ public class XP : MonoBehaviour
     {
         GenralSaveContainer saveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
         int ans = 0;
-        if (saveData.progression.xp != 0)
+        if (saveData.progression.xp > 100)
         {
             float num = Mathf.Log10((float)saveData.progression.xp / 100f) / Mathf.Log10(1.25f);
             ans = Mathf.CeilToInt(num);
