@@ -9,7 +9,7 @@ public class EnemyEncounter : MonoBehaviour
 {
     public bool startEncounter = false;
     [Header("Score Information")]
-    bool once = true;
+    public bool once = true;
     public int[] coins = new int[4]{ 100, 200, 300, 500 };
     public int[] ammountOfEachEnemy = new int[4] { 0, 0, 0, 0 };
     
@@ -59,6 +59,9 @@ public class EnemyEncounter : MonoBehaviour
     public TextMeshProUGUI waveNumber;
     public Slider waveSlider;
     public float sliderCurrentValue;
+
+    [Header("Tutorial")]
+    public bool tutorial;
 
     void Start()
     {
@@ -178,6 +181,12 @@ public class EnemyEncounter : MonoBehaviour
         spawnPlace.z = -0.3f;
         GameObject temp = Instantiate(enemyToSpawn, spawnPlace, new Quaternion(0, 0, 0, 0));
         temp.GetComponent<Health>().partOfEncounter = true;
+        if (tutorial)
+        {
+            temp.GetComponent<Health>().dummyEnemy = true;
+            temp.GetComponent<Health>().Max_Health = 10;
+            temp.GetComponent<Health>().Current_Health = 10;
+        }
     }
     public void AddMaxEnemys()
     {

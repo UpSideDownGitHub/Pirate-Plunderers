@@ -27,13 +27,16 @@ public class Health : MonoBehaviour
     public bool seenPlayer;
     public int coins;
 
+    [Header("Dummy")]
+    public bool dummyEnemy;
+
     // Start is called before the first frame update
     public void Start()
     {
         Current_Health = Max_Health;
         if (partOfEncounter)
             EnemySpawner = GameObject.FindGameObjectWithTag("ENEMYSPAWNER").GetComponent<EnemyEncounter>();
-        else
+        else if (!dummyEnemy)
         {
             seenPlayer = false;
             Invoke("noPlayerSoDestroy", 8);
@@ -83,13 +86,19 @@ public class Health : MonoBehaviour
             saveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
             xp = GameObject.FindGameObjectWithTag("XP").GetComponent<XP>();
             xp.updateXP();
+            if (dummyEnemy)
+            {
+                GenralSaveContainer saveData2 = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                saveData2.progression.coins += coins;
+                saveData2.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            }
 
             if (partOfEncounter && !allreadyDead)
             {
                 EnemySpawner.CurrentEnemysDecrease(weightOfEnemy, enemyNumber);
                 allreadyDead = true;
             }
-            else if (!partOfEncounter && !allreadyDead)
+            else if (!partOfEncounter && !allreadyDead && !dummyEnemy)
             {
                 player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Random_Spawns>();
                 player.decreaseCurrentEnemy();
@@ -98,7 +107,6 @@ public class Health : MonoBehaviour
                 GenralSaveContainer saveData2 = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
                 saveData2.progression.coins += coins;
                 saveData2.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
-
             }
         }
     }
