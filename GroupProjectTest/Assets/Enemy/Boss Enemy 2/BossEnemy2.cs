@@ -21,6 +21,7 @@ public class BossEnemy2 : MonoBehaviour
     public bool Attacking;
     public float Attack_Time;
     public float Attack_Time2;
+    
 
     [Header("Shooting")]
 

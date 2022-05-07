@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6414866383773751954}
   - component: {fileID: 6414866383773751955}
   - component: {fileID: 6414866383773751952}
-  - component: {fileID: 6414866383773751956}
   - component: {fileID: 6414866383773751957}
   - component: {fileID: 6414866383773751953}
+  - component: {fileID: 2708046707042539178}
   m_Layer: 0
   m_Name: Small Enemy 2
   m_TagString: Enemy
@@ -115,34 +115,7 @@ MonoBehaviour:
   player: {fileID: 0}
   seenPlayer: 0
   coins: 100
---- !u!114 &6414866383773751956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6414866383773751958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c706f43d88e00774fa88016ca6b0b4ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NavMesh: {fileID: 6414866383773751957}
-  Speed: 2.5
-  maxdistacne: 20
-  Stopping_Distance: 3
-  Attack_Distance: 15
-  Player: {fileID: 0}
-  Damage: 20
-  Attacking: 0
-  Attack_Time: 1
-  firePoint: {fileID: 6414866384225169708}
-  bullet: {fileID: 5099541382865166979, guid: a9bcf433784607b41a848a359423d0b1, type: 3}
-  bulletForce: 8
-  cannonRotateSpeed: 75
-  randomDeviation: 0.2
-  rotationSpeed: 170
-  seenPlayer: 0
+  dummyEnemy: 0
 --- !u!195 &6414866383773751957
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -191,6 +164,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5245421, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2708046707042539178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414866383773751958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9db1f38e7ac2447b15fdcc5f013012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useCannon: 1
+  useArrows: 0
+  useSideCannons: 0
+  useBombs: 0
+  useRam: 0
+  navMesh: {fileID: 6414866383773751957}
+  speed: 2.5
+  acceleration: 1.5
+  maxdistacne: 20
+  stoppingDistance: 3
+  maxCannonAttackDistance: 15
+  minCannonAttackDistance: 0
+  Player: {fileID: 0}
+  attacking: 0
+  attackTime: 1
+  attackTime2: 0
+  attackTime3: 0
+  rotationSpeed: 170
+  seenPlayer: 0
+  cannonFirePointMaster: {fileID: 6414866384225169708}
+  cannonFirePoint:
+  - {fileID: 6414866385128281670}
+  cannonBullet: {fileID: 5099541382865166979, guid: a9bcf433784607b41a848a359423d0b1, type: 3}
+  cannonBulletForce: 8
+  cannonRandomDeviation: 0.2
+  cannonRotateSpeed: 75
+  arrows: 0
+  arrowFirePoints: []
+  arrowBullet: {fileID: 0}
+  arrowBulletForce: 0
+  arrowRandomDeviation: 0
+  sideCannonFirePoints: []
+  sideCannonBullet: {fileID: 0}
+  sideCannonForce: 0
+  sideCannonRandomDeviation: 0
+  bombFirePoint: {fileID: 0}
+  bombBullet: {fileID: 0}
+  bombBulletForce: 0
+  bombRandomDeviation: 0
+  mortorRotateSpeed: 0
+  maxRamDistance: 0
+  minRamDistance: 0
+  ramSpeed: 0
+  ramAcceleration: 0
+  ramCoolDown: 0
+  ramTime: 0
+  ram: 0
+  canRam: 1
 --- !u!1 &6414866384225169708
 GameObject:
   m_ObjectHideFlags: 0

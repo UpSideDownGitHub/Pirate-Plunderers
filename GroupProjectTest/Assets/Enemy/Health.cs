@@ -46,24 +46,8 @@ public class Health : MonoBehaviour
 
     public void noPlayerSoDestroy()
     {
-        if (enemyNumber == 0)
-            seenPlayer = gameObject.GetComponent<SmallEnemy>().seenPlayer;
-        else if (enemyNumber == 1)
-        {
-            if (subNumber == 0)
-                seenPlayer = gameObject.GetComponent<MediumEnemy>().seenPlayer;
-            else if (subNumber == 1)
-                seenPlayer = gameObject.GetComponent<MediumEnemy2>().seenPlayer;
-            else if (subNumber == 2)
-                seenPlayer = gameObject.GetComponent<MediumEnemy3>().seenPlayer;
-        }
-        else if (enemyNumber == 2)
-        {
-            if (subNumber == 0)
-                seenPlayer = gameObject.GetComponent<LargeEnemy1>().seenPlayer;
-            else
-                seenPlayer = gameObject.GetComponent<LargeEnemy2>().seenPlayer;
-        }
+         seenPlayer = gameObject.GetComponent<Enemy>().seenPlayer;
+        
         if (!seenPlayer)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Random_Spawns>();
