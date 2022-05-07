@@ -37,6 +37,11 @@ public class Enemy : MonoBehaviour
     [Header("Seen Player")]
     public bool seenPlayer;
 
+    [Header("Random Movement")]
+    public float randomMovementRadius;
+    bool doOnce = false;
+    bool hasPath = false;
+
     [Header("Shooting")]
     [Header("Cannon")]
     public GameObject cannonFirePointMaster;
@@ -87,6 +92,8 @@ public class Enemy : MonoBehaviour
 
         seenPlayer = false;
 
+        doOnce = true;
+
         Player = GameObject.FindGameObjectWithTag("Player");
 
         navMesh.speed = speed;
@@ -109,6 +116,9 @@ public class Enemy : MonoBehaviour
 
         if (distance < maxdistacne)
         {
+            if (!doOnce)
+                navMesh.ResetPath();
+            doOnce = true;
             // SEEN THE PLAYER
             seenPlayer = true;
 
@@ -179,16 +189,38 @@ public class Enemy : MonoBehaviour
 
             // set a new destination of the player
             navMesh.SetDestination(Player.transform.position);
+            hasPath = false;
         }
         else
         {
-            navMesh.ResetPath();
-            CancelInvoke("Attack");
-            if (useSideCannons)
-                CancelInvoke("SideAttack");
-            if (useBombs)
-                CancelInvoke("BombAttack");
-            attacking = false;
+            if (doOnce)
+            {
+                doOnce = false;
+                //navMesh.ResetPath();
+                CancelInvoke("Attack");
+                if (useSideCannons)
+                    CancelInvoke("SideAttack");
+                if (useBombs)
+                    CancelInvoke("BombAttack");
+                attacking = false;
+            }
+
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, navMesh.velocity.normalized);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+
+
+            if (navMesh.remainingDistance <= navMesh.stoppingDistance + 1f)
+            {
+                Vector2 point;
+                do
+                {
+                    point = Random.insideUnitCircle * randomMovementRadius;
+                    point += (Vector2)transform.position;
+                } while (!NavMesh.SamplePosition(new Vector3(point.x, point.y, 0), out _, 0.1f, NavMesh.AllAreas));
+
+                navMesh.SetDestination(point);
+                hasPath = false;
+            }
         }
     }
 

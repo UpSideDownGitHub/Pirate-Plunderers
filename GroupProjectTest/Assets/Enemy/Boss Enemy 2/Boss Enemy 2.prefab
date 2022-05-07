@@ -573,6 +573,7 @@ MonoBehaviour:
   attackTime3: 1.34
   rotationSpeed: 110
   seenPlayer: 0
+  randomMovementRadius: 20
   cannonFirePointMaster: {fileID: 195730792057571405}
   cannonFirePoint:
   - {fileID: 6124330301560474008}
