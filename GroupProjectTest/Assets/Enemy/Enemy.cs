@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
     public float randomMovementRadius;
     bool doOnce = false;
     bool hasPath = false;
+    Quaternion previousRotation;
 
     [Header("Shooting")]
     [Header("Cannon")]
@@ -124,8 +125,16 @@ public class Enemy : MonoBehaviour
 
             // ROTATION
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, navMesh.velocity.normalized);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            if (navMesh.velocity.normalized == Vector3.zero)
+            {
+                rotation = previousRotation;
+            }
+            else
+            {
+                previousRotation = rotation;
+            }
+            transform.rotation = rotation;
             // ROTATE THE CANNON TO FACE THE PLAYER
             if (useCannon)
             {
