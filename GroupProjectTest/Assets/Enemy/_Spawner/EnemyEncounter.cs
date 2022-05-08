@@ -152,7 +152,7 @@ public class EnemyEncounter : MonoBehaviour
         if (enemyNumber == 0)
         {
             ammountOfEachEnemy[0] += 1;
-            enemyToSpawn = enimies[Random.Range(0, 2)];
+            enemyToSpawn = enimies[Random.Range(0, 3)];
         }
         else if (enemyNumber == 1)
         {
@@ -162,7 +162,7 @@ public class EnemyEncounter : MonoBehaviour
         else if (enemyNumber == 2)
         {
             ammountOfEachEnemy[2] += 1;
-            enemyToSpawn = enimies[Random.Range(6, 7)]; 
+            enemyToSpawn = enimies[Random.Range(6, 8)]; 
         }
         else if (enemyNumber == 3)
         {

@@ -283,9 +283,10 @@ public class Enemy : MonoBehaviour
 
     public void SideAttack()
     {
-        if ((sideCannonFirePoints[1].transform.position - Player.transform.position).sqrMagnitude < (sideCannonFirePoints[5].transform.position - Player.transform.position).sqrMagnitude)
+        int half = sideCannonFirePoints.Length / 2;
+        if ((sideCannonFirePoints[0].transform.position - Player.transform.position).sqrMagnitude < (sideCannonFirePoints[half].transform.position - Player.transform.position).sqrMagnitude)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < half; i++)
             {
                 Quaternion direction = new Quaternion(sideCannonFirePoints[i].transform.rotation.x, sideCannonFirePoints[i].transform.rotation.y, sideCannonFirePoints[1].transform.rotation.z + Random.Range(-sideCannonRandomDeviation, sideCannonRandomDeviation), sideCannonFirePoints[1].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(sideCannonBullet, sideCannonFirePoints[i].transform.position, direction);
@@ -294,7 +295,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            for (int i = 4; i < 8; i++)
+            for (int i = half; i < sideCannonFirePoints.Length; i++)
             {
                 Quaternion direction = new Quaternion(sideCannonFirePoints[i].transform.rotation.x, sideCannonFirePoints[i].transform.rotation.y, sideCannonFirePoints[1].transform.rotation.z + Random.Range(-sideCannonRandomDeviation, sideCannonRandomDeviation), sideCannonFirePoints[1].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(sideCannonBullet, sideCannonFirePoints[i].transform.position, direction);
