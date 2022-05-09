@@ -7,8 +7,7 @@ public class ButtonManager : MonoBehaviour
 {
      
 
-    public void ChangeScene(string newGameLevel)
-
+    public void ChangeScene(int newGameLevel)
     {
         SceneManager.LoadScene(newGameLevel);
     }
