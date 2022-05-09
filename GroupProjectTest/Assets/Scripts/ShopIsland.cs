@@ -84,6 +84,8 @@ public class ShopIsland : MonoBehaviour
         homeActiveButton.SetActive(true);
         homeMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        custom = GameObject.FindGameObjectWithTag("Player").GetComponent<Customisations>();
+        Debug.Log(custom);
         custom.loadCustomisations();
     }
     public void homeEnter()
