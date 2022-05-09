@@ -12,11 +12,15 @@ public class PauseMenu : MonoBehaviour
     public GameObject miniMap;
     public GameObject pauseButton;
     public GameObject shootButton;
+    public GameObject xpBar;
+    public GameObject healthBar;
 
 
     public void Pause()
     {
         joyStick.SetActive(false);
+        xpBar.SetActive(false);
+        healthBar.SetActive(false);
         pauseButton.SetActive(false);
         shootButton.SetActive(false);
         miniMap.SetActive(false);
@@ -29,6 +33,8 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         pauseButton.SetActive(true);
+        xpBar.SetActive(true);
+        healthBar.SetActive(true);
         shootButton.SetActive(true);
         miniMap.SetActive(true);
         joyStick.SetActive(true);
