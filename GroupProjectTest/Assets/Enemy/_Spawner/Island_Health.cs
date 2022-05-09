@@ -23,6 +23,8 @@ public class Island_Health : MonoBehaviour
 
     void Start()
     {
+        healthBar = gameObject.GetComponentInChildren<Slider>();
+        Debug.Log(healthBar);
         healthBar.value = 0;
         healthBarCanvas.SetActive(false);   
     }

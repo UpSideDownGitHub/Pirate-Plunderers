@@ -8,15 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 0a0b4ff622195fb4582ff3b13c5f3266
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/GoncaloSampleScene.unity
-    guid: 50af4dc523928794784c8e2b5d2a9bf7
   - enabled: 1
-    path: Assets/Scenes/ReubenScene 2.unity
-    guid: 5f0fe9b9ff1ca76488df4edf6a28eb0f
+    path: Assets/Scenes/ReubenScene 3.unity
+    guid: ebb398bbe4a7d974ebe0fb5f55ccaf77
   - enabled: 1
     path: Assets/Scenes/Tutorial Scene.unity
     guid: fc467e852dfdf5645859e67e04f05898
