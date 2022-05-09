@@ -15,6 +15,7 @@ public class Sounds : MonoBehaviour
         previous = ranNum;
         musicSource.PlayOneShot(music[ranNum]);
     }
+
     public void Update()
     {
         if (!musicSource.isPlaying)
