@@ -19,10 +19,12 @@ public class EnemyEncounter : MonoBehaviour
 
     [Header("Encounter Information")]
     public int[] enemyWeights;
+    public int[] globalMaxAmountOfEnemy;
     public int[] maxAmmountOfEnemy;
     public int[] ammountOfCurrentEnemy;
     public int[] enemySpawnOrder;
 
+    public int globalMaxEnemys;
     public int maxEnemys;
     public int currentEnemys;
 
@@ -64,10 +66,17 @@ public class EnemyEncounter : MonoBehaviour
 
     EncounterManager encounterManager;
 
-    void Start()
+    public void OnEnable()
     {
         encounterManager = GameObject.FindGameObjectWithTag("ENCOUNTERMANAGER").GetComponent<EncounterManager>();
         wavesUI.SetActive(true);
+        currentwave = 1;
+        maxAmmountOfEnemy = globalMaxAmountOfEnemy;
+        maxEnemys = globalMaxEnemys;
+        currentEnemys = 0;
+        sliderCurrentValue = 0;
+
+
         waveNumber.text = "Wave: " + currentwave.ToString();
         sliderCurrentValue = waveSlider.minValue;
         waveSlider.value = 0;
@@ -128,6 +137,7 @@ public class EnemyEncounter : MonoBehaviour
             saveData.progression.coins += coinsGained;
             saveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
             encounterManager.encounterStarted = false;
+            gameObject.SetActive(false);
         }
     }
 
