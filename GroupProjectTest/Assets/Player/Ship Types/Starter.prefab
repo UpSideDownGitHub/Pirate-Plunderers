@@ -2117,6 +2117,7 @@ MonoBehaviour:
   colourMain: {fileID: 4575836633515116073}
   playerMain: {fileID: 1595399016953403368}
   playerMove: {fileID: 8033231581922864298}
+  playerHealthBar: {fileID: 1584652569211122140}
 --- !u!96 &4449921870144724664
 TrailRenderer:
   serializedVersion: 2

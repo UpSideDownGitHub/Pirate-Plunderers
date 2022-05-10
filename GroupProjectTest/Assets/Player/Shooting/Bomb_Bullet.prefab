@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Time: 2
-  damage: 35
+  damage: 20
   enemy_bullet: 0
   ExplosionRadius: 5
 --- !u!58 &-871690972891401031

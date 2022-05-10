@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Time: 3
-  damage: 35
+  damage: 25
   enemy_bullet: 0
 --- !u!50 &1510111689978093647
 Rigidbody2D:

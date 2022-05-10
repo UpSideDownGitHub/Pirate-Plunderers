@@ -18,6 +18,5 @@ public class healthbardamage : MonoBehaviour
 
     public void takedamage()
     {
-        healthbar.currenthealth -= damage;
     }
 }

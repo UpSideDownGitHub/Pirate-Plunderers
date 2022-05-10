@@ -8,7 +8,7 @@ public class healthbar : MonoBehaviour
     public Slider healthbarslider;
 
     public float maxHealth;
-    public static float currenthealth;
+    public float currenthealth;
 
     public GameObject Deathcanvus;
     public ParticleSystem Playerdeath;
@@ -19,25 +19,25 @@ public class healthbar : MonoBehaviour
     private void Start()
     {
         currenthealth = maxHealth;
+        healthbarslider.minValue = 0;
+        healthbarslider.maxValue = maxHealth;
+        healthbarslider.value = currenthealth;
         Deathcanvus.SetActive(false);
     }
 
     public void damage(float damage)
     {
         currenthealth -= damage;
+        healthbarslider.value = currenthealth;
     }
 
     void Update()
     {
-        healthbarslider.value = currenthealth;
-
         if (currenthealth <= 0 && doOnce)
         {
             doOnce = false;
             Instantiate(Playerdeath, transform.position, Quaternion.identity);
             Invoke ("delay", 2f);
-
-
         }
     }
     public void delay()
