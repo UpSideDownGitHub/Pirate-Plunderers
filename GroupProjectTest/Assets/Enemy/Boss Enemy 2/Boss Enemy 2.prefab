@@ -566,6 +566,7 @@ MonoBehaviour:
   stoppingDistance: 2
   maxCannonAttackDistance: 30
   minCannonAttackDistance: 7
+  maxDistanceToWanderEncounter: 0
   Player: {fileID: 0}
   attacking: 0
   attackTime: 0.87
@@ -573,7 +574,11 @@ MonoBehaviour:
   attackTime3: 1.34
   rotationSpeed: 110
   seenPlayer: 0
+  shotByPlayer: 0
   randomMovementRadius: 20
+  partOrEncounter: 0
+  minRadius: 20
+  maxRadius: 35
   cannonFirePointMaster: {fileID: 195730792057571405}
   cannonFirePoint:
   - {fileID: 6124330301560474008}

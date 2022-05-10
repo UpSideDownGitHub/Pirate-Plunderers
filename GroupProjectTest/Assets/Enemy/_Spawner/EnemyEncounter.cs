@@ -64,6 +64,9 @@ public class EnemyEncounter : MonoBehaviour
     [Header("Tutorial")]
     public bool tutorial;
 
+    [Header("Unlock Next Area")]
+    public UnlockSectionManager unlockSectionManager;
+
     EncounterManager encounterManager;
 
     public void OnEnable()
@@ -125,6 +128,8 @@ public class EnemyEncounter : MonoBehaviour
                 newUnlock.SetActive(true);
                 saveData.progression.firstBossDefeated = true;
                 saveData.ShipUpgrade.Cannons[5].unlocked = true;
+                unlockSectionManager.turnOffCollider();
+                
             }
             else if (!saveData.progression.finalBossDefeated && hasBoss && bossID == 1)
             {
