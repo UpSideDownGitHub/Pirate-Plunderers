@@ -26,7 +26,7 @@ public class PauseMenu : MonoBehaviour
         miniMap.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-       
+
     }
 
     public void Resume()
@@ -39,22 +39,22 @@ public class PauseMenu : MonoBehaviour
         miniMap.SetActive(true);
         joyStick.SetActive(true);
         Time.timeScale = 1f;
-        
+
     }
 
     public void LoadMenu()
 
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0);
 
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quiting Game");
-        SceneManager.LoadScene(0);
-     }
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(0);
+    }
 }
 
 
