@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class EnemyEncounter : MonoBehaviour
 {
-    public bool startEncounter = false;
     [Header("Score Information")]
     public bool once = true;
     public int[] coins = new int[4]{ 100, 200, 300, 500 };
@@ -63,8 +62,11 @@ public class EnemyEncounter : MonoBehaviour
     [Header("Tutorial")]
     public bool tutorial;
 
+    EncounterManager encounterManager;
+
     void Start()
     {
+        encounterManager = GameObject.FindGameObjectWithTag("ENCOUNTERMANAGER").GetComponent<EncounterManager>();
         wavesUI.SetActive(true);
         waveNumber.text = "Wave: " + currentwave.ToString();
         sliderCurrentValue = waveSlider.minValue;
@@ -125,6 +127,7 @@ public class EnemyEncounter : MonoBehaviour
                 newUnlock.SetActive(false);
             saveData.progression.coins += coinsGained;
             saveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            encounterManager.encounterStarted = false;
         }
     }
 

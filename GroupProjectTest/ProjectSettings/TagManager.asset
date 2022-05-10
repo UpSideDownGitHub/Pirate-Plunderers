@@ -11,6 +11,7 @@ TagManager:
   - SHOOTBUTTON
   - XP
   - SETTLEMENT
+  - ENCOUNTERMANAGER
   layers:
   - Default
   - TransparentFX
