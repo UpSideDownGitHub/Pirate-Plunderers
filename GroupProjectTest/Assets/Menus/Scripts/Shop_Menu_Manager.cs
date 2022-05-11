@@ -219,8 +219,11 @@ public class Shop_Menu_Manager : MonoBehaviour
         }
         try
         {
-
-            ammount = Random.Range(1, itemsToBuy_Type.Count);
+            
+            if (itemsToBuy_Type.Count <= 15)
+                ammount = Random.Range(1, itemsToBuy_Type.Count);
+            else
+                ammount = Random.Range(1, itemsToBuy_Type.Count);
             for (int i = 0; i < ammount; i++)
             {
                 int itemToSpawn = Random.Range(0, itemsToBuy_Type.Count);
