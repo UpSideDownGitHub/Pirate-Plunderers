@@ -21,7 +21,7 @@ public class healthbar : MonoBehaviour
         currenthealth = maxHealth;
         healthbarslider.minValue = 0;
         healthbarslider.maxValue = maxHealth;
-        healthbarslider.value = currenthealth;
+        healthbarslider.value = maxHealth;
         Deathcanvus.SetActive(false);
     }
 
