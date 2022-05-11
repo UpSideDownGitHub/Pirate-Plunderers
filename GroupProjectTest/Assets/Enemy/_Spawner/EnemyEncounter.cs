@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class EnemyEncounter : MonoBehaviour
 {
-    public bool startEncounter = false;
     [Header("Score Information")]
     public bool once = true;
     public int[] coins = new int[4]{ 100, 200, 300, 500 };
@@ -20,10 +19,12 @@ public class EnemyEncounter : MonoBehaviour
 
     [Header("Encounter Information")]
     public int[] enemyWeights;
+    public int[] globalMaxAmountOfEnemy;
     public int[] maxAmmountOfEnemy;
     public int[] ammountOfCurrentEnemy;
     public int[] enemySpawnOrder;
 
+    public int globalMaxEnemys;
     public int maxEnemys;
     public int currentEnemys;
 
@@ -63,9 +64,22 @@ public class EnemyEncounter : MonoBehaviour
     [Header("Tutorial")]
     public bool tutorial;
 
-    void Start()
+    [Header("Unlock Next Area")]
+    public UnlockSectionManager unlockSectionManager;
+
+    EncounterManager encounterManager;
+
+    public void OnEnable()
     {
+        encounterManager = GameObject.FindGameObjectWithTag("ENCOUNTERMANAGER").GetComponent<EncounterManager>();
         wavesUI.SetActive(true);
+        currentwave = 1;
+        maxAmmountOfEnemy = globalMaxAmountOfEnemy;
+        maxEnemys = globalMaxEnemys;
+        currentEnemys = 0;
+        sliderCurrentValue = 0;
+
+
         waveNumber.text = "Wave: " + currentwave.ToString();
         sliderCurrentValue = waveSlider.minValue;
         waveSlider.value = 0;
@@ -114,6 +128,8 @@ public class EnemyEncounter : MonoBehaviour
                 newUnlock.SetActive(true);
                 saveData.progression.firstBossDefeated = true;
                 saveData.ShipUpgrade.Cannons[5].unlocked = true;
+                unlockSectionManager.turnOffCollider();
+                
             }
             else if (!saveData.progression.finalBossDefeated && hasBoss && bossID == 1)
             {
@@ -125,6 +141,8 @@ public class EnemyEncounter : MonoBehaviour
                 newUnlock.SetActive(false);
             saveData.progression.coins += coinsGained;
             saveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+            encounterManager.encounterStarted = false;
+            gameObject.SetActive(false);
         }
     }
 
@@ -152,7 +170,7 @@ public class EnemyEncounter : MonoBehaviour
         if (enemyNumber == 0)
         {
             ammountOfEachEnemy[0] += 1;
-            enemyToSpawn = enimies[Random.Range(0, 2)];
+            enemyToSpawn = enimies[Random.Range(0, 3)];
         }
         else if (enemyNumber == 1)
         {
@@ -162,7 +180,7 @@ public class EnemyEncounter : MonoBehaviour
         else if (enemyNumber == 2)
         {
             ammountOfEachEnemy[2] += 1;
-            enemyToSpawn = enimies[Random.Range(6, 7)]; 
+            enemyToSpawn = enimies[Random.Range(6, 8)]; 
         }
         else if (enemyNumber == 3)
         {

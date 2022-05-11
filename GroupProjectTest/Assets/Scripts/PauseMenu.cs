@@ -12,44 +12,49 @@ public class PauseMenu : MonoBehaviour
     public GameObject miniMap;
     public GameObject pauseButton;
     public GameObject shootButton;
+    public GameObject xpBar;
+    public GameObject healthBar;
 
 
     public void Pause()
     {
         joyStick.SetActive(false);
+        xpBar.SetActive(false);
+        healthBar.SetActive(false);
         pauseButton.SetActive(false);
         shootButton.SetActive(false);
         miniMap.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-       
+
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
         pauseButton.SetActive(true);
+        xpBar.SetActive(true);
+        healthBar.SetActive(true);
         shootButton.SetActive(true);
         miniMap.SetActive(true);
         joyStick.SetActive(true);
         Time.timeScale = 1f;
-        
+
     }
 
     public void LoadMenu()
 
     {
         Time.timeScale = 1f;
-        Debug.Log("loading menu");
-        SceneManager.LoadScene(newGameLevel);
+        SceneManager.LoadSceneAsync(0);
 
     }
 
-        public void QuitGame()
+    public void QuitGame()
     {
-        Debug.Log("Quiting Game");
-        Application.Quit();
-     }
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(0);
+    }
 }
 
 

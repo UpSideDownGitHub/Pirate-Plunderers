@@ -13,6 +13,8 @@ public class ShopIsland : MonoBehaviour
     public GameObject joyStick;
     public GameObject shootButton;
     public GameObject miniMap;
+    public GameObject xpBar;
+    public GameObject healthBar;
 
     public bool home = false;
 
@@ -47,6 +49,8 @@ public class ShopIsland : MonoBehaviour
         miniMap.SetActive(true);
         shootButton.SetActive(true);
         joyStick.SetActive(true);
+        xpBar.SetActive(true);
+        healthBar.SetActive(true);
         //pauseButton.SetActive(true);
         //inventoryButton.SetActive(true);
         shopActiveButton.SetActive(true);
@@ -58,6 +62,8 @@ public class ShopIsland : MonoBehaviour
         miniMap.SetActive(false);
         shootButton.SetActive(false);
         joyStick.SetActive(false);
+        xpBar.SetActive(false);
+        healthBar.SetActive(false);
         //pauseButton.SetActive(false);
         //inventoryButton.SetActive(false);
         shopActiveButton.SetActive(false);
@@ -71,11 +77,15 @@ public class ShopIsland : MonoBehaviour
         miniMap.SetActive(true);
         shootButton.SetActive(true);
         joyStick.SetActive(true);
+        xpBar.SetActive(true);
+        healthBar.SetActive(true);
         //pauseButton.SetActive(true);
         //inventoryButton.SetActive(true);
         homeActiveButton.SetActive(true);
         homeMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        custom = GameObject.FindGameObjectWithTag("Player").GetComponent<Customisations>();
+        Debug.Log(custom);
         custom.loadCustomisations();
     }
     public void homeEnter()
@@ -83,6 +93,8 @@ public class ShopIsland : MonoBehaviour
         miniMap.SetActive(false);
         shootButton.SetActive(false);
         joyStick.SetActive(false);
+        xpBar.SetActive(false);
+        healthBar.SetActive(false);
         //pauseButton.SetActive(false);
         //inventoryButton.SetActive(false);
         homeActiveButton.SetActive(false);

@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [Header("Distances")]
     public float maxCannonAttackDistance;
     public float minCannonAttackDistance;
+    public float maxDistanceToWanderEncounter;
 
     [Header("Attacking")]
     public GameObject Player;
@@ -36,12 +37,16 @@ public class Enemy : MonoBehaviour
 
     [Header("Seen Player")]
     public bool seenPlayer;
+    public bool shotByPlayer;
 
     [Header("Random Movement")]
     public float randomMovementRadius;
     bool doOnce = false;
-    bool hasPath = false;
     Quaternion previousRotation;
+
+    [Header("Part Of Encounter Random Movement")]
+    public bool partOrEncounter;
+    public float minRadius, maxRadius;
 
     [Header("Shooting")]
     [Header("Cannon")]
@@ -94,6 +99,8 @@ public class Enemy : MonoBehaviour
         seenPlayer = false;
 
         doOnce = true;
+
+        partOrEncounter = gameObject.GetComponent<Health>().partOfEncounter;
 
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -198,7 +205,6 @@ public class Enemy : MonoBehaviour
 
             // set a new destination of the player
             navMesh.SetDestination(Player.transform.position);
-            hasPath = false;
         }
         else
         {
@@ -217,18 +223,31 @@ public class Enemy : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, navMesh.velocity.normalized);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
 
-
+            if (shotByPlayer)
+            {
+                navMesh.SetDestination(Player.transform.position);
+                shotByPlayer = false;
+            }
             if (navMesh.remainingDistance <= navMesh.stoppingDistance + 1f)
             {
                 Vector2 point;
                 do
                 {
-                    point = Random.insideUnitCircle * randomMovementRadius;
-                    point += (Vector2)transform.position;
+                    if (partOrEncounter)
+                    {
+                        // move into range of the player
+                        point = Random.insideUnitCircle.normalized * Random.Range(minRadius, maxRadius);
+                        point += (Vector2)Player.transform.position;
+                    }
+                    else
+                    {
+                        // move to random point
+                        point = Random.insideUnitCircle * randomMovementRadius;
+                        point += (Vector2)transform.position;
+                    }
                 } while (!NavMesh.SamplePosition(new Vector3(point.x, point.y, 0), out _, 0.1f, NavMesh.AllAreas));
 
                 navMesh.SetDestination(point);
-                hasPath = false;
             }
         }
     }
@@ -283,9 +302,10 @@ public class Enemy : MonoBehaviour
 
     public void SideAttack()
     {
-        if ((sideCannonFirePoints[1].transform.position - Player.transform.position).sqrMagnitude < (sideCannonFirePoints[5].transform.position - Player.transform.position).sqrMagnitude)
+        int half = sideCannonFirePoints.Length / 2;
+        if ((sideCannonFirePoints[0].transform.position - Player.transform.position).sqrMagnitude < (sideCannonFirePoints[half].transform.position - Player.transform.position).sqrMagnitude)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < half; i++)
             {
                 Quaternion direction = new Quaternion(sideCannonFirePoints[i].transform.rotation.x, sideCannonFirePoints[i].transform.rotation.y, sideCannonFirePoints[1].transform.rotation.z + Random.Range(-sideCannonRandomDeviation, sideCannonRandomDeviation), sideCannonFirePoints[1].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(sideCannonBullet, sideCannonFirePoints[i].transform.position, direction);
@@ -294,7 +314,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            for (int i = 4; i < 8; i++)
+            for (int i = half; i < sideCannonFirePoints.Length; i++)
             {
                 Quaternion direction = new Quaternion(sideCannonFirePoints[i].transform.rotation.x, sideCannonFirePoints[i].transform.rotation.y, sideCannonFirePoints[1].transform.rotation.z + Random.Range(-sideCannonRandomDeviation, sideCannonRandomDeviation), sideCannonFirePoints[1].transform.rotation.w);
                 GameObject TemporaryBulletHandler = Instantiate(sideCannonBullet, sideCannonFirePoints[i].transform.position, direction);

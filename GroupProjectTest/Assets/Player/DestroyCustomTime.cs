@@ -23,25 +23,19 @@ public class DestroyCustomTime : MonoBehaviour
             collision.gameObject.GetComponent<Health>().Take_Off_Health(damage);
             Destroy(gameObject);
         }
-        if (collision.tag == "Player" && enemy_bullet)
+        else if (collision.tag == "Player" && enemy_bullet)
         {
             collision.gameObject.GetComponent<healthbar>().damage(damage);
             Destroy(gameObject);
-            //print"take damage"
         }
         else if (collision.tag == "Walls")
         {
-            try
-            {
-                collision.gameObject.GetComponent<Island_Health>().addHealth((int)damage/2);
-
-                Destroy(gameObject);
-            }
-            catch
-            {
-                Destroy(gameObject);
-            }
-            
+            Destroy(gameObject);
+        }
+        else if (collision.tag == "SETTLEMENT" && !enemy_bullet)
+        {
+            collision.gameObject.GetComponent<Island_Health>().addHealth((int)damage);
+            Destroy(gameObject);
         }
     }
 }

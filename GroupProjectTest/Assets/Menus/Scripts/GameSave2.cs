@@ -50,6 +50,7 @@ public class GenralSaveContainer
     "<level>0</level>\n" +
     "<xp> 0 </xp>\n" +
     "<coins> 0 </coins>\n" +
+    "<firstTime> true </firstTime>\n" +
     "<firstBossDefeated > false </firstBossDefeated >\n" +
     "<finalBossDefeated > false </finalBossDefeated >\n" +
   "</Progression >\n" +

@@ -6,10 +6,10 @@ public class sceneloader : MonoBehaviour
     // Start is called before the first frame update
     public void backtomennu()
     {
-      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + -2);
+      SceneManager.LoadScene(0);
     }
     public void replay()
     {
-        SceneManager.LoadScene("GoncaloSampleScene");
+        SceneManager.LoadScene(1);
     }
 }

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class QuitToDeskTop : MonoBehaviour
 {
-
-
-      public void QuitToDesktop()
-        {
-            Application.Quit();
+    public void QuitToDesktop()
+    {
+        Application.Quit();
         Debug.Log("Quiting to Desktop");
-        }
+    }
 }

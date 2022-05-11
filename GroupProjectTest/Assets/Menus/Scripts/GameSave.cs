@@ -8,6 +8,7 @@ public class Progression
     public int level;
     public int xp;
     public int coins;
+    public bool firstTime;
     public bool firstBossDefeated;
     public bool finalBossDefeated;
 }

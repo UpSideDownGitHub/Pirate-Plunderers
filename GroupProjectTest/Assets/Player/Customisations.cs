@@ -26,6 +26,7 @@ public class Customisations : MonoBehaviour
 
     [Header("Stat Changing")]
     public PlayerMove playerMove; // Speed & Turning Speed; 
+    public healthbar playerHealthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -66,5 +67,11 @@ public class Customisations : MonoBehaviour
         // setting variables based upon what is equipped
         playerMove.playerSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].speed + SaveData.ShipUpgrade.Sails[SaveData.loadout.sail].speed;
         playerMove.rotationSpeed = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].turning + SaveData.ShipUpgrade.Sails[SaveData.loadout.sail].turning;
+
+        playerHealthBar.maxHealth = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].health;
+        playerHealthBar.currenthealth = SaveData.ShipUpgrade.Sizes[SaveData.loadout.size].health;
+        playerHealthBar.healthbarslider.minValue = 0;
+        playerHealthBar.healthbarslider.maxValue = playerHealthBar.maxHealth;
+        playerHealthBar.healthbarslider.value = playerHealthBar.currenthealth;
     }
 }
