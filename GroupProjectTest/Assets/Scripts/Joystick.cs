@@ -32,6 +32,7 @@ public class Joystick : MonoBehaviour
             currentlyShooting = true;
         PointerEventData pointerEventData = baseEventData as PointerEventData;
         joystick.SetActive(true);
+        joystickBG.SetActive(true);
         joystick.transform.position = pointerEventData.position;
         joystickBG.transform.position = pointerEventData.position;
         joystickTouchPos = pointerEventData.position;
@@ -63,9 +64,11 @@ public class Joystick : MonoBehaviour
         if (shooting)
             currentlyShooting = false;
         joystick.SetActive(false);
+        joystickBG.SetActive(false);
         joystickVec = Vector2.zero;
         joystick.transform.position = joystickOriginalPos;
         joystickBG.transform.position = joystickOriginalPos;
+        
     }
 
 }

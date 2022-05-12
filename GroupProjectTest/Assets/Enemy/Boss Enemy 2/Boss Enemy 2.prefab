@@ -576,8 +576,8 @@ MonoBehaviour:
   shotByPlayer: 0
   randomMovementRadius: 20
   partOrEncounter: 0
-  minRadius: 20
-  maxRadius: 35
+  minRadius: 10
+  maxRadius: 20
   cannonFirePointMaster: {fileID: 195730792057571405}
   cannonFirePoint:
   - {fileID: 6124330301560474008}

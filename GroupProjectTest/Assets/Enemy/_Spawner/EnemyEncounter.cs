@@ -93,7 +93,10 @@ public class EnemyEncounter : MonoBehaviour
         if (currentEnemys == 0 && currentwave <= maxWaves)
         {
             currentwave += 1;
-            
+
+            healthbar healthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<healthbar>();
+            healthBar.currenthealth = healthBar.maxHealth;
+
             waveNumber.text = "Wave: " + currentwave.ToString();
             sliderCurrentValue = waveSlider.minValue;
             waveSlider.value = 0;
@@ -117,6 +120,10 @@ public class EnemyEncounter : MonoBehaviour
             once = false;
             wavesUI.SetActive(false);
             endScreenUI.SetActive(true);
+
+            healthbar healthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<healthbar>();
+            healthBar.currenthealth = healthBar.maxHealth;
+
             for (int i = 0; i < 4; i++)
             {
                 coinsGained += ammountOfEachEnemy[i] * coins[i];
