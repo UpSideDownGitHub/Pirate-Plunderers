@@ -55,7 +55,17 @@ public class Bomb : MonoBehaviour
             CancelInvoke();
             DamagePlayer();
         }
+        else if (collision.tag == "SETTLEMENT" && !enemy_bullet)
+        {
+            collision.gameObject.GetComponent<Island_Health>().addHealth((int)damage);
+            CancelInvoke();
+            DamageEnemy();
+        }
         else if (collision.tag == "Walls")
+        {
+            CancelInvoke();
             DamagePlayer();
+        }
+
     }
 }
