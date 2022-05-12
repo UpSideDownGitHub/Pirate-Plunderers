@@ -14,17 +14,26 @@ public class PauseMenu : MonoBehaviour
     public GameObject shootButton;
     public GameObject xpBar;
     public GameObject healthBar;
+    public GameObject joystickMove;
+    public GameObject joystickAim;
+    public GameObject joystickBoat;
+    public GameObject joystickCannon;
 
 
     public void Pause()
     {
+        pauseMenuUI.SetActive(true);
         joyStick.SetActive(false);
         xpBar.SetActive(false);
         healthBar.SetActive(false);
         pauseButton.SetActive(false);
         shootButton.SetActive(false);
         miniMap.SetActive(false);
-        pauseMenuUI.SetActive(true);
+        miniMap.SetActive(false);
+        joystickMove.SetActive(false);
+        joystickAim.SetActive(false);
+        joystickBoat.SetActive(false);
+        joystickCannon.SetActive(false);
         Time.timeScale = 0f;
 
     }
@@ -38,6 +47,10 @@ public class PauseMenu : MonoBehaviour
         shootButton.SetActive(true);
         miniMap.SetActive(true);
         joyStick.SetActive(true);
+        joystickMove.SetActive(true);
+        joystickAim.SetActive(true);
+        joystickBoat.SetActive(true);
+        joystickCannon.SetActive(true);
         Time.timeScale = 1f;
 
     }
