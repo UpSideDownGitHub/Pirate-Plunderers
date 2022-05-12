@@ -155,20 +155,40 @@ public class EnemyEncounter : MonoBehaviour
 
     public void GenerateEnemys()
     {
-        foreach (int enemynum in enemySpawnOrder)
+        bool temp;
+        do
         {
-            for (int i = 0; i < maxAmmountOfEnemy[enemynum]; i++)
+            foreach (int enemynum in enemySpawnOrder)
             {
-                if (maxAmmountOfEnemy[enemynum] <= ammountOfCurrentEnemy[enemynum] || (currentEnemys + enemyWeights[enemynum]) > maxEnemys)
+                for (int i = 0; i < maxAmmountOfEnemy[enemynum]; i++)
                 {
-                    break;
+                    if (maxAmmountOfEnemy[enemynum] <= ammountOfCurrentEnemy[enemynum] || (currentEnemys + enemyWeights[enemynum]) > maxEnemys || Random.Range(1,100) < 50)
+                    {
+                        break;
+                    }
+                    Spawn(enemynum);
+
+                    currentEnemys += enemyWeights[enemynum];
+                    ammountOfCurrentEnemy[enemynum] += 1;
                 }
-                Spawn(enemynum);
-               
-                currentEnemys += enemyWeights[enemynum];
-                ammountOfCurrentEnemy[enemynum] += 1;
             }
-        }
+            bool one = true, two = true, three = true, four = true;
+            for (int i = 0; i < 4; i++)
+            {
+                if (ammountOfCurrentEnemy[i] >= maxAmmountOfEnemy[i] || (currentEnemys + enemyWeights[i]) > maxEnemys)
+                {
+                    if (i == 0)
+                        one = false;
+                    else if (i == 1)
+                        two = false;
+                    else if (i == 2)
+                        three = false;
+                    else if (i == 3)
+                        four = false;
+                }
+            }
+            temp = one || two || three || four;
+        } while (temp);
     }
 
     public void Spawn(int enemyNumber)

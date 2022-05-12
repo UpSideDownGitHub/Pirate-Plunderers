@@ -562,15 +562,15 @@ MonoBehaviour:
   speed: 1.5
   acceleration: 1.5
   maxdistacne: 50
-  stoppingDistance: 2
+  stoppingDistance: 7.5
   maxCannonAttackDistance: 30
   minCannonAttackDistance: 7
   maxDistanceToWanderEncounter: 0
   Player: {fileID: 0}
   attacking: 0
-  attackTime: 0.87
+  attackTime: 2.13
   attackTime2: 0
-  attackTime3: 1.34
+  attackTime3: 3.4
   rotationSpeed: 110
   seenPlayer: 0
   shotByPlayer: 0

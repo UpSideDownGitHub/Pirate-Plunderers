@@ -13,9 +13,9 @@ public class Bomb : MonoBehaviour
     public void Start()
     {
         if (enemy_bullet)
-            Invoke("DamageEnemy", Time);
-        else
             Invoke("DamagePlayer", Time);
+        else
+            Invoke("DamageEnemy", Time);
     }
 
     public void DamageEnemy()
