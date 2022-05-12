@@ -312,7 +312,7 @@ MonoBehaviour:
   partOfEncounter: 0
   allreadyDead: 0
   EnemySpawner: {fileID: 0}
-  weightOfEnemy: 5
+  weightOfEnemy: 10
   enemyNumber: 2
   subNumber: 1
   xp: {fileID: 0}
