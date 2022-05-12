@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavMesh: {fileID: 240010028868832055}
   Speed: 1.8
-  maxdistacne: 10
+  maxdistacne: 50
   Stopping_Distance: 3
   Attack_Distance: 10
   Player: {fileID: 0}

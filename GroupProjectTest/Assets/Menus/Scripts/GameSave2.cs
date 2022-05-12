@@ -211,7 +211,7 @@ public class GenralSaveContainer
     "<Sizes >\n" +
       "<Size ID = \"0\" >\n" +
         "<name > Starter </name >\n" +
-        "<health > 100 </health >\n" +
+        "<health > 1000 </health >\n" +
         "<speed > 1.6 </speed >\n" +
         "<turning > 95 </turning >\n" +
         "<description > Starter </description >\n" +
