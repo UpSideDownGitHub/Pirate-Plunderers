@@ -37,9 +37,10 @@ public class Shooting : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public void OnEnable()
     {
-        
+        canShoot = true;
+        reloading = true;
     }
 
     // Update is called once per frame

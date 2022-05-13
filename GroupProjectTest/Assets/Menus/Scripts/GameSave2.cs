@@ -67,7 +67,7 @@ public class GenralSaveContainer
         "<damage > 100 </damage >\n" +
         "<range > 100 </range >\n" +
         "<description > default cannon that is a good all rounder </description >\n" +
-        "<unlocked > false </unlocked >\n" +
+        "<unlocked > true </unlocked >\n" +
         "<buyable > false </buyable >\n" +
         "<price > 0 </price >\n" +
       "</Cannon >\n" +
@@ -141,7 +141,7 @@ public class GenralSaveContainer
         "<speed > 1.6 </speed >\n" +
         "<turning > 95 </turning >\n" +
         "<description > small sail that is the default at the start of the game </description >\n" +
-        "<unlocked > false </unlocked >\n" +
+        "<unlocked > true </unlocked >\n" +
         "<buyable > false </buyable >\n" +
         "<price > 0 </price >\n" +
       "</Sail >\n" +
@@ -168,8 +168,8 @@ public class GenralSaveContainer
       "<Colour ID = \"0\" >\n" +
         "<name > Colour 1 </name >\n" +
         "<description > Colour 1 </description >\n" +
-        "<unlocked > false </unlocked >\n" +
-        "<buyable > true </buyable >\n" +
+        "<unlocked > true </unlocked >\n" +
+        "<buyable > false </buyable >\n" +
         "<price > 100 </price >\n" +
       "</Colour >\n" +
       "<Colour ID = \"1\" >\n" +
@@ -211,17 +211,17 @@ public class GenralSaveContainer
     "<Sizes >\n" +
       "<Size ID = \"0\" >\n" +
         "<name > Starter </name >\n" +
-        "<health > 100 </health >\n" +
+        "<health > 1000 </health >\n" +
         "<speed > 1.6 </speed >\n" +
         "<turning > 95 </turning >\n" +
         "<description > Starter </description >\n" +
-        "<unlocked > false </unlocked >\n" +
+        "<unlocked > true </unlocked >\n" +
         "<buyable > false </buyable >\n" +
         "<price > 0 </price >\n" +
       "</Size >\n" +
       "<Size ID = \"1\" >\n" +
         "<name > Small </name >\n" +
-        "<health > 100 </health >\n" +
+        "<health > 2500 </health >\n" +
         "<speed > 1.3 </speed >\n" +
         "<turning > 75 </turning >\n" +
         "<description > Small </description >\n" +
@@ -231,7 +231,7 @@ public class GenralSaveContainer
       "</Size >\n" +
       "<Size ID = \"2\" >\n" +
         "<name > Medium </name >\n" +
-        "<health > 100 </health >\n" +
+        "<health > 4000 </health >\n" +
         "<speed > 1 </speed >\n" +
         "<turning > 55 </turning >\n" +
         "<description > Medium </description >\n" +
@@ -241,7 +241,7 @@ public class GenralSaveContainer
       "</Size >\n" +
       "<Size ID = \"3\" >\n" +
         "<name > Large </name >\n" +
-        "<health > 100 </health >\n" +
+        "<health > 5500 </health >\n" +
         "<speed > 0.8 </speed >\n" +
         "<turning > 35 </turning >\n" +
         "<description > Large </description >\n" +

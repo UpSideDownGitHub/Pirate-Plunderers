@@ -14,6 +14,10 @@ public class OptionsMenu : MonoBehaviour
     public GameObject optionsMenu; 
     public GameObject xpBar;
     public GameObject healthBar;
+    public GameObject joystickMove;
+    public GameObject joystickAim;
+    public GameObject joystickBoat;
+    public GameObject joystickCannon;
 
 
     public void Active()
@@ -25,6 +29,10 @@ public class OptionsMenu : MonoBehaviour
         shootButton.SetActive(false);
         miniMap.SetActive(false);
         pauseMenuUI.SetActive(false);
+        joystickMove.SetActive(false);
+        joystickAim.SetActive(false);
+        joystickBoat.SetActive(false);
+        joystickCannon.SetActive(false);
         optionsMenu.SetActive(true);
         Time.timeScale = 0f;
 
@@ -40,6 +48,10 @@ public class OptionsMenu : MonoBehaviour
         shootButton.SetActive(true);
         miniMap.SetActive(true);
         joyStick.SetActive(true);
+        joystickMove.SetActive(true);
+        joystickAim.SetActive(true);
+        joystickBoat.SetActive(true);
+        joystickCannon.SetActive(true);
         Time.timeScale = 1f;
 
     }

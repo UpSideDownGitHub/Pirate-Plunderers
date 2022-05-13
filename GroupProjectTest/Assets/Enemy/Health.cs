@@ -61,7 +61,8 @@ public class Health : MonoBehaviour
     {
         seenPlayer = true;
         Current_Health -= damage;
-        gameObject.GetComponent<Enemy>().shotByPlayer = true;
+        if (!dummyEnemy)
+            gameObject.GetComponent<Enemy>().shotByPlayer = true;
         if (Current_Health <= 0)
         {
             Destroy(gameObject);

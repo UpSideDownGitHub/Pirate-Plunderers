@@ -13,9 +13,9 @@ public class Bomb : MonoBehaviour
     public void Start()
     {
         if (enemy_bullet)
-            Invoke("DamageEnemy", Time);
-        else
             Invoke("DamagePlayer", Time);
+        else
+            Invoke("DamageEnemy", Time);
     }
 
     public void DamageEnemy()
@@ -55,7 +55,17 @@ public class Bomb : MonoBehaviour
             CancelInvoke();
             DamagePlayer();
         }
+        else if (collision.tag == "SETTLEMENT" && !enemy_bullet)
+        {
+            collision.gameObject.GetComponent<Island_Health>().addHealth((int)damage);
+            CancelInvoke();
+            DamageEnemy();
+        }
         else if (collision.tag == "Walls")
+        {
+            CancelInvoke();
             DamagePlayer();
+        }
+
     }
 }

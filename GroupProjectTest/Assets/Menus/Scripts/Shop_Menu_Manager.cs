@@ -219,8 +219,11 @@ public class Shop_Menu_Manager : MonoBehaviour
         }
         try
         {
-
-            ammount = Random.Range(1, itemsToBuy_Type.Count);
+            
+            if (itemsToBuy_Type.Count <= 15)
+                ammount = Random.Range(1, itemsToBuy_Type.Count);
+            else
+                ammount = Random.Range(1, itemsToBuy_Type.Count);
             for (int i = 0; i < ammount; i++)
             {
                 int itemToSpawn = Random.Range(0, itemsToBuy_Type.Count);
@@ -256,6 +259,9 @@ public class Shop_Menu_Manager : MonoBehaviour
                         SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Cannons[currentItemSelected].price;
                         SaveData.ShipUpgrade.Cannons[currentItemSelected].unlocked = true;
                         SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                        Destroy(currentButton);
+                        currentUpgradeType = 999;
+                        currentItemSelected = 999;
                     }
                 }
 
@@ -269,6 +275,9 @@ public class Shop_Menu_Manager : MonoBehaviour
                         SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Sails[currentItemSelected].price;
                         SaveData.ShipUpgrade.Sails[currentItemSelected].unlocked = true;
                         SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                        Destroy(currentButton);
+                        currentUpgradeType = 999;
+                        currentItemSelected = 999;
                     }
                 }
             }
@@ -281,6 +290,9 @@ public class Shop_Menu_Manager : MonoBehaviour
                         SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Colours[currentItemSelected].price;
                         SaveData.ShipUpgrade.Colours[currentItemSelected].unlocked = true;
                         SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                        Destroy(currentButton);
+                        currentUpgradeType = 999;
+                        currentItemSelected = 999;
                     }
                 }
             }
@@ -293,14 +305,13 @@ public class Shop_Menu_Manager : MonoBehaviour
                         SaveData.progression.coins -= (int)SaveData.ShipUpgrade.Sizes[currentItemSelected].price;
                         SaveData.ShipUpgrade.Sizes[currentItemSelected].unlocked = true;
                         SaveData.Save(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
+                        Destroy(currentButton);
+                        currentUpgradeType = 999;
+                        currentItemSelected = 999;
                     }
                 }
             }
             coins.text = SaveData.progression.coins.ToString();
-
-            Destroy(currentButton);
-            currentUpgradeType = 999;
-            currentItemSelected = 999;
         }
         
     }
