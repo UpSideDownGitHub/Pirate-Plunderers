@@ -31,7 +31,7 @@ public class ButtonManager : MonoBehaviour
     {
         GenralSaveContainer saveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
         if (saveData.progression.firstTime)
-            newGameLevel = 2;
+            newGameLevel = 3;
         SceneManager.LoadScene(newGameLevel);
     }
 }

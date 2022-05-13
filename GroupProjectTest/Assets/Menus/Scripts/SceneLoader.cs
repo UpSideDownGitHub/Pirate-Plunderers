@@ -16,8 +16,9 @@ public class SceneLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);    
     }
 
-    public void LoadScene()
+    public void LoadScene(int sceneToLoad)
     {
+        scene = sceneToLoad;
         loadingScreen.SetActive(true);
         StartCoroutine(Load());
     }
@@ -29,7 +30,7 @@ public class SceneLoader : MonoBehaviour
 
         GenralSaveContainer saveData = GenralSaveContainer.Load(Path.Combine(Application.persistentDataPath, "GameSave.xml"));
         if (saveData.progression.firstTime)
-            scene = 2;
+            scene = 3;
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
         while (!operation.isDone)

@@ -12,6 +12,6 @@ public class sceneloader : MonoBehaviour
     public void replay()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

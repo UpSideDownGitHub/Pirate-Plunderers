@@ -15,6 +15,8 @@ public class healthbar : MonoBehaviour
 
     bool doOnce = true;
 
+    public GameObject[] otherUI;
+
 
     private void Start()
     {
@@ -45,6 +47,10 @@ public class healthbar : MonoBehaviour
 
         Destroy(gameObject);
         Deathcanvus.SetActive(true);
+        foreach (var item in otherUI)
+        {
+            item.SetActive(false);
+        }
         Time.timeScale = 0;
     }
 }
